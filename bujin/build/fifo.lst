@@ -1,0 +1,402 @@
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"fifo.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.initQueue,"ax",%progbits
+  20              		.align	1
+  21              		.global	initQueue
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	initQueue:
+  27              	.LFB130:
+  28              		.file 1 "Core/BSP/fifo.c"
+   1:Core/BSP/fifo.c **** #include "fifo.h"
+   2:Core/BSP/fifo.c **** 
+   3:Core/BSP/fifo.c **** /**********************************************************
+   4:Core/BSP/fifo.c **** ***	Emm_V5.0步进闭环控制例程
+   5:Core/BSP/fifo.c **** ***	编写作者：ZHANGDATOU
+   6:Core/BSP/fifo.c **** ***	技术支持：张大头闭环伺服
+   7:Core/BSP/fifo.c **** ***	淘宝店铺：https://zhangdatou.taobao.com
+   8:Core/BSP/fifo.c **** ***	CSDN博客：http s://blog.csdn.net/zhangdatou666
+   9:Core/BSP/fifo.c **** ***	qq交流群：262438510
+  10:Core/BSP/fifo.c **** **********************************************************/
+  11:Core/BSP/fifo.c **** 
+  12:Core/BSP/fifo.c **** __IO FIFO_t rxFIFO = {0};
+  13:Core/BSP/fifo.c **** 
+  14:Core/BSP/fifo.c **** /**
+  15:Core/BSP/fifo.c **** 	* @brief   初始化队列
+  16:Core/BSP/fifo.c **** 	* @param   无
+  17:Core/BSP/fifo.c **** 	* @retval  无
+  18:Core/BSP/fifo.c **** 	*/
+  19:Core/BSP/fifo.c **** void initQueue(void)
+  20:Core/BSP/fifo.c **** {
+  29              		.loc 1 20 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  21:Core/BSP/fifo.c **** 	rxFIFO.ptrRead  = 0;
+  34              		.loc 1 21 2 view .LVU1
+  35              		.loc 1 21 18 is_stmt 0 view .LVU2
+  36 0000 034B     		ldr	r3, .L2
+  37 0002 0022     		movs	r2, #0
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s 			page 2
+
+
+  38 0004 83F80121 		strb	r2, [r3, #257]
+  22:Core/BSP/fifo.c **** 	rxFIFO.ptrWrite = 0;
+  39              		.loc 1 22 2 is_stmt 1 view .LVU3
+  40              		.loc 1 22 18 is_stmt 0 view .LVU4
+  41 0008 83F80021 		strb	r2, [r3, #256]
+  23:Core/BSP/fifo.c **** }
+  42              		.loc 1 23 1 view .LVU5
+  43 000c 7047     		bx	lr
+  44              	.L3:
+  45 000e 00BF     		.align	2
+  46              	.L2:
+  47 0010 00000000 		.word	.LANCHOR0
+  48              		.cfi_endproc
+  49              	.LFE130:
+  51              		.section	.text.fifo_enQueue,"ax",%progbits
+  52              		.align	1
+  53              		.global	fifo_enQueue
+  54              		.syntax unified
+  55              		.thumb
+  56              		.thumb_func
+  58              	fifo_enQueue:
+  59              	.LVL0:
+  60              	.LFB131:
+  24:Core/BSP/fifo.c **** 
+  25:Core/BSP/fifo.c **** /**
+  26:Core/BSP/fifo.c **** 	* @brief   入队
+  27:Core/BSP/fifo.c **** 	* @param   无
+  28:Core/BSP/fifo.c **** 	* @retval  无
+  29:Core/BSP/fifo.c **** 	*/
+  30:Core/BSP/fifo.c **** void fifo_enQueue(uint16_t data)
+  31:Core/BSP/fifo.c **** {
+  61              		.loc 1 31 1 is_stmt 1 view -0
+  62              		.cfi_startproc
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65              		@ link register save eliminated.
+  32:Core/BSP/fifo.c **** 	rxFIFO.buffer[rxFIFO.ptrWrite] = data;
+  66              		.loc 1 32 2 view .LVU7
+  67              		.loc 1 32 22 is_stmt 0 view .LVU8
+  68 0000 0B4B     		ldr	r3, .L7
+  69 0002 93F80021 		ldrb	r2, [r3, #256]	@ zero_extendqisi2
+  70 0006 D2B2     		uxtb	r2, r2
+  71              		.loc 1 32 33 view .LVU9
+  72 0008 23F81200 		strh	r0, [r3, r2, lsl #1]	@ movhi
+  33:Core/BSP/fifo.c **** 	
+  34:Core/BSP/fifo.c **** 	++rxFIFO.ptrWrite;
+  73              		.loc 1 34 2 is_stmt 1 view .LVU10
+  74              		.loc 1 34 10 is_stmt 0 view .LVU11
+  75 000c 93F80021 		ldrb	r2, [r3, #256]	@ zero_extendqisi2
+  76              		.loc 1 34 2 view .LVU12
+  77 0010 0132     		adds	r2, r2, #1
+  78 0012 D2B2     		uxtb	r2, r2
+  79 0014 83F80021 		strb	r2, [r3, #256]
+  35:Core/BSP/fifo.c **** 	
+  36:Core/BSP/fifo.c **** 	if(rxFIFO.ptrWrite >= FIFO_SIZE)
+  80              		.loc 1 36 2 is_stmt 1 view .LVU13
+  81              		.loc 1 36 11 is_stmt 0 view .LVU14
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s 			page 3
+
+
+  82 0018 93F80031 		ldrb	r3, [r3, #256]	@ zero_extendqisi2
+  83              		.loc 1 36 4 view .LVU15
+  84 001c 13F0800F 		tst	r3, #128
+  85 0020 00D1     		bne	.L6
+  86              	.L4:
+  37:Core/BSP/fifo.c **** 	{
+  38:Core/BSP/fifo.c **** 		rxFIFO.ptrWrite = 0;
+  39:Core/BSP/fifo.c **** 	}
+  40:Core/BSP/fifo.c **** }
+  87              		.loc 1 40 1 view .LVU16
+  88 0022 7047     		bx	lr
+  89              	.L6:
+  38:Core/BSP/fifo.c **** 	}
+  90              		.loc 1 38 3 is_stmt 1 view .LVU17
+  38:Core/BSP/fifo.c **** 	}
+  91              		.loc 1 38 19 is_stmt 0 view .LVU18
+  92 0024 024B     		ldr	r3, .L7
+  93 0026 0022     		movs	r2, #0
+  94 0028 83F80021 		strb	r2, [r3, #256]
+  95              		.loc 1 40 1 view .LVU19
+  96 002c F9E7     		b	.L4
+  97              	.L8:
+  98 002e 00BF     		.align	2
+  99              	.L7:
+ 100 0030 00000000 		.word	.LANCHOR0
+ 101              		.cfi_endproc
+ 102              	.LFE131:
+ 104              		.section	.text.fifo_deQueue,"ax",%progbits
+ 105              		.align	1
+ 106              		.global	fifo_deQueue
+ 107              		.syntax unified
+ 108              		.thumb
+ 109              		.thumb_func
+ 111              	fifo_deQueue:
+ 112              	.LFB132:
+  41:Core/BSP/fifo.c **** 
+  42:Core/BSP/fifo.c **** /**
+  43:Core/BSP/fifo.c **** 	* @brief   出队
+  44:Core/BSP/fifo.c **** 	* @param   无
+  45:Core/BSP/fifo.c **** 	* @retval  无
+  46:Core/BSP/fifo.c **** 	*/
+  47:Core/BSP/fifo.c **** uint16_t fifo_deQueue(void)
+  48:Core/BSP/fifo.c **** {
+ 113              		.loc 1 48 1 is_stmt 1 view -0
+ 114              		.cfi_startproc
+ 115              		@ args = 0, pretend = 0, frame = 0
+ 116              		@ frame_needed = 0, uses_anonymous_args = 0
+ 117              		@ link register save eliminated.
+  49:Core/BSP/fifo.c **** 	uint16_t element = 0;
+ 118              		.loc 1 49 2 view .LVU21
+ 119              	.LVL1:
+  50:Core/BSP/fifo.c **** 
+  51:Core/BSP/fifo.c **** 	element = rxFIFO.buffer[rxFIFO.ptrRead];
+ 120              		.loc 1 51 2 view .LVU22
+ 121              		.loc 1 51 32 is_stmt 0 view .LVU23
+ 122 0000 0B4B     		ldr	r3, .L12
+ 123 0002 93F80121 		ldrb	r2, [r3, #257]	@ zero_extendqisi2
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s 			page 4
+
+
+ 124 0006 D2B2     		uxtb	r2, r2
+ 125              		.loc 1 51 10 view .LVU24
+ 126 0008 33F81200 		ldrh	r0, [r3, r2, lsl #1]
+ 127 000c 80B2     		uxth	r0, r0
+ 128              	.LVL2:
+  52:Core/BSP/fifo.c **** 
+  53:Core/BSP/fifo.c **** 	++rxFIFO.ptrRead;
+ 129              		.loc 1 53 2 is_stmt 1 view .LVU25
+ 130              		.loc 1 53 10 is_stmt 0 view .LVU26
+ 131 000e 93F80121 		ldrb	r2, [r3, #257]	@ zero_extendqisi2
+ 132              		.loc 1 53 2 view .LVU27
+ 133 0012 0132     		adds	r2, r2, #1
+ 134 0014 D2B2     		uxtb	r2, r2
+ 135 0016 83F80121 		strb	r2, [r3, #257]
+  54:Core/BSP/fifo.c **** 
+  55:Core/BSP/fifo.c **** 	if(rxFIFO.ptrRead >= FIFO_SIZE)
+ 136              		.loc 1 55 2 is_stmt 1 view .LVU28
+ 137              		.loc 1 55 11 is_stmt 0 view .LVU29
+ 138 001a 93F80131 		ldrb	r3, [r3, #257]	@ zero_extendqisi2
+ 139              		.loc 1 55 4 view .LVU30
+ 140 001e 13F0800F 		tst	r3, #128
+ 141 0022 00D1     		bne	.L11
+ 142              	.L10:
+  56:Core/BSP/fifo.c **** 	{
+  57:Core/BSP/fifo.c **** 		rxFIFO.ptrRead = 0;
+  58:Core/BSP/fifo.c **** 	}
+  59:Core/BSP/fifo.c **** 
+  60:Core/BSP/fifo.c **** 	return element;
+ 143              		.loc 1 60 2 is_stmt 1 view .LVU31
+  61:Core/BSP/fifo.c **** }
+ 144              		.loc 1 61 1 is_stmt 0 view .LVU32
+ 145 0024 7047     		bx	lr
+ 146              	.L11:
+  57:Core/BSP/fifo.c **** 	}
+ 147              		.loc 1 57 3 is_stmt 1 view .LVU33
+  57:Core/BSP/fifo.c **** 	}
+ 148              		.loc 1 57 18 is_stmt 0 view .LVU34
+ 149 0026 024B     		ldr	r3, .L12
+ 150 0028 0022     		movs	r2, #0
+ 151 002a 83F80121 		strb	r2, [r3, #257]
+ 152 002e F9E7     		b	.L10
+ 153              	.L13:
+ 154              		.align	2
+ 155              	.L12:
+ 156 0030 00000000 		.word	.LANCHOR0
+ 157              		.cfi_endproc
+ 158              	.LFE132:
+ 160              		.section	.text.fifo_isEmpty,"ax",%progbits
+ 161              		.align	1
+ 162              		.global	fifo_isEmpty
+ 163              		.syntax unified
+ 164              		.thumb
+ 165              		.thumb_func
+ 167              	fifo_isEmpty:
+ 168              	.LFB133:
+  62:Core/BSP/fifo.c **** 
+  63:Core/BSP/fifo.c **** /**
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s 			page 5
+
+
+  64:Core/BSP/fifo.c **** 	* @brief   判断空队列
+  65:Core/BSP/fifo.c **** 	* @param   无
+  66:Core/BSP/fifo.c **** 	* @retval  无
+  67:Core/BSP/fifo.c **** 	*/
+  68:Core/BSP/fifo.c **** bool fifo_isEmpty(void)
+  69:Core/BSP/fifo.c **** {
+ 169              		.loc 1 69 1 is_stmt 1 view -0
+ 170              		.cfi_startproc
+ 171              		@ args = 0, pretend = 0, frame = 0
+ 172              		@ frame_needed = 0, uses_anonymous_args = 0
+ 173              		@ link register save eliminated.
+  70:Core/BSP/fifo.c **** 	if(rxFIFO.ptrRead == rxFIFO.ptrWrite)
+ 174              		.loc 1 70 2 view .LVU36
+ 175              		.loc 1 70 11 is_stmt 0 view .LVU37
+ 176 0000 064B     		ldr	r3, .L17
+ 177 0002 93F80121 		ldrb	r2, [r3, #257]	@ zero_extendqisi2
+ 178 0006 D2B2     		uxtb	r2, r2
+ 179              		.loc 1 70 29 view .LVU38
+ 180 0008 93F80031 		ldrb	r3, [r3, #256]	@ zero_extendqisi2
+ 181 000c DBB2     		uxtb	r3, r3
+ 182              		.loc 1 70 4 view .LVU39
+ 183 000e 9A42     		cmp	r2, r3
+ 184 0010 01D0     		beq	.L16
+  71:Core/BSP/fifo.c **** 	{
+  72:Core/BSP/fifo.c **** 		return true;
+  73:Core/BSP/fifo.c **** 	}
+  74:Core/BSP/fifo.c **** 
+  75:Core/BSP/fifo.c **** 	return false;
+ 185              		.loc 1 75 9 view .LVU40
+ 186 0012 0020     		movs	r0, #0
+ 187 0014 7047     		bx	lr
+ 188              	.L16:
+  72:Core/BSP/fifo.c **** 	}
+ 189              		.loc 1 72 10 view .LVU41
+ 190 0016 0120     		movs	r0, #1
+  76:Core/BSP/fifo.c **** }
+ 191              		.loc 1 76 1 view .LVU42
+ 192 0018 7047     		bx	lr
+ 193              	.L18:
+ 194 001a 00BF     		.align	2
+ 195              	.L17:
+ 196 001c 00000000 		.word	.LANCHOR0
+ 197              		.cfi_endproc
+ 198              	.LFE133:
+ 200              		.section	.text.fifo_queueLength,"ax",%progbits
+ 201              		.align	1
+ 202              		.global	fifo_queueLength
+ 203              		.syntax unified
+ 204              		.thumb
+ 205              		.thumb_func
+ 207              	fifo_queueLength:
+ 208              	.LFB134:
+  77:Core/BSP/fifo.c **** 
+  78:Core/BSP/fifo.c **** /**
+  79:Core/BSP/fifo.c **** 	* @brief   计算队列长度
+  80:Core/BSP/fifo.c **** 	* @param   无
+  81:Core/BSP/fifo.c **** 	* @retval  无
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s 			page 6
+
+
+  82:Core/BSP/fifo.c **** 	*/
+  83:Core/BSP/fifo.c **** uint16_t fifo_queueLength(void)
+  84:Core/BSP/fifo.c **** {
+ 209              		.loc 1 84 1 is_stmt 1 view -0
+ 210              		.cfi_startproc
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 213              		@ link register save eliminated.
+  85:Core/BSP/fifo.c **** 	if(rxFIFO.ptrRead <= rxFIFO.ptrWrite)
+ 214              		.loc 1 85 2 view .LVU44
+ 215              		.loc 1 85 11 is_stmt 0 view .LVU45
+ 216 0000 0C4B     		ldr	r3, .L22
+ 217 0002 93F80121 		ldrb	r2, [r3, #257]	@ zero_extendqisi2
+ 218 0006 D2B2     		uxtb	r2, r2
+ 219              		.loc 1 85 29 view .LVU46
+ 220 0008 93F80031 		ldrb	r3, [r3, #256]	@ zero_extendqisi2
+ 221 000c DBB2     		uxtb	r3, r3
+ 222              		.loc 1 85 4 view .LVU47
+ 223 000e 9A42     		cmp	r2, r3
+ 224 0010 07D8     		bhi	.L20
+  86:Core/BSP/fifo.c **** 	{
+  87:Core/BSP/fifo.c **** 		return (rxFIFO.ptrWrite - rxFIFO.ptrRead);
+ 225              		.loc 1 87 3 is_stmt 1 view .LVU48
+ 226              		.loc 1 87 17 is_stmt 0 view .LVU49
+ 227 0012 084B     		ldr	r3, .L22
+ 228 0014 93F80001 		ldrb	r0, [r3, #256]	@ zero_extendqisi2
+ 229              		.loc 1 87 35 view .LVU50
+ 230 0018 93F80131 		ldrb	r3, [r3, #257]	@ zero_extendqisi2
+ 231              		.loc 1 87 27 view .LVU51
+ 232 001c C01A     		subs	r0, r0, r3
+ 233 001e 80B2     		uxth	r0, r0
+ 234 0020 7047     		bx	lr
+ 235              	.L20:
+  88:Core/BSP/fifo.c **** 	}
+  89:Core/BSP/fifo.c **** 	else
+  90:Core/BSP/fifo.c **** 	{
+  91:Core/BSP/fifo.c **** 		return (FIFO_SIZE - rxFIFO.ptrRead + rxFIFO.ptrWrite);
+ 236              		.loc 1 91 3 is_stmt 1 view .LVU52
+ 237              		.loc 1 91 46 is_stmt 0 view .LVU53
+ 238 0022 044B     		ldr	r3, .L22
+ 239 0024 93F80001 		ldrb	r0, [r3, #256]	@ zero_extendqisi2
+ 240              		.loc 1 91 29 view .LVU54
+ 241 0028 93F80131 		ldrb	r3, [r3, #257]	@ zero_extendqisi2
+ 242              		.loc 1 91 38 view .LVU55
+ 243 002c C01A     		subs	r0, r0, r3
+ 244 002e 8030     		adds	r0, r0, #128
+ 245 0030 80B2     		uxth	r0, r0
+  92:Core/BSP/fifo.c **** 	}
+  93:Core/BSP/fifo.c **** }
+ 246              		.loc 1 93 1 view .LVU56
+ 247 0032 7047     		bx	lr
+ 248              	.L23:
+ 249              		.align	2
+ 250              	.L22:
+ 251 0034 00000000 		.word	.LANCHOR0
+ 252              		.cfi_endproc
+ 253              	.LFE134:
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s 			page 7
+
+
+ 255              		.global	rxFIFO
+ 256              		.section	.bss.rxFIFO,"aw",%nobits
+ 257              		.align	2
+ 258              		.set	.LANCHOR0,. + 0
+ 261              	rxFIFO:
+ 262 0000 00000000 		.space	258
+ 262      00000000 
+ 262      00000000 
+ 262      00000000 
+ 262      00000000 
+ 263              		.text
+ 264              	.Letext0:
+ 265              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 266              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 267              		.file 4 "Core/BSP/fifo.h"
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 fifo.c
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:20     .text.initQueue:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:26     .text.initQueue:00000000 initQueue
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:47     .text.initQueue:00000010 $d
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:52     .text.fifo_enQueue:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:58     .text.fifo_enQueue:00000000 fifo_enQueue
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:100    .text.fifo_enQueue:00000030 $d
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:105    .text.fifo_deQueue:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:111    .text.fifo_deQueue:00000000 fifo_deQueue
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:156    .text.fifo_deQueue:00000030 $d
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:161    .text.fifo_isEmpty:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:167    .text.fifo_isEmpty:00000000 fifo_isEmpty
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:196    .text.fifo_isEmpty:0000001c $d
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:201    .text.fifo_queueLength:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:207    .text.fifo_queueLength:00000000 fifo_queueLength
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:251    .text.fifo_queueLength:00000034 $d
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:261    .bss.rxFIFO:00000000 rxFIFO
+C:\Users\oyx19\AppData\Local\Temp\ccDH1hOG.s:257    .bss.rxFIFO:00000000 $d
+
+NO UNDEFINED SYMBOLS

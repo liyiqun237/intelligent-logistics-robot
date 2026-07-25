@@ -1,0 +1,1643 @@
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"Emm_V5.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Emm_V5_Reset_CurPos_To_Zero,"ax",%progbits
+  20              		.align	1
+  21              		.global	Emm_V5_Reset_CurPos_To_Zero
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	Emm_V5_Reset_CurPos_To_Zero:
+  27              	.LVL0:
+  28              	.LFB0:
+  29              		.file 1 "Core/BSP/Emm_V5.c"
+   1:Core/BSP/Emm_V5.c **** #include "Emm_V5.h"
+   2:Core/BSP/Emm_V5.c **** 
+   3:Core/BSP/Emm_V5.c **** /**********************************************************
+   4:Core/BSP/Emm_V5.c **** ***	Emm_V5.0²½½ø±Õ»·¿ØÖÆÀý³Ì
+   5:Core/BSP/Emm_V5.c **** ***	±àÐ´×÷Õß£ºZHANGDATOU
+   6:Core/BSP/Emm_V5.c **** ***	¼¼ÊõÖ§³Ö£ºÕÅ´óÍ·±Õ»·ËÅ·þ
+   7:Core/BSP/Emm_V5.c **** ***	ÌÔ±¦µêÆÌ£ºhttps://zhangdatou.taobao.com
+   8:Core/BSP/Emm_V5.c **** ***	CSDN²©¿Í£ºhttp s://blog.csdn.net/zhangdatou666
+   9:Core/BSP/Emm_V5.c **** ***	qq½»Á÷Èº£º262438510
+  10:Core/BSP/Emm_V5.c **** **********************************************************/
+  11:Core/BSP/Emm_V5.c **** 
+  12:Core/BSP/Emm_V5.c **** /**
+  13:Core/BSP/Emm_V5.c ****   * @brief    ½«µ±Ç°Î»ÖÃÇåÁã
+  14:Core/BSP/Emm_V5.c ****   * @param    addr  £ºµç»úµØÖ·
+  15:Core/BSP/Emm_V5.c ****   * @retval   µØÖ· + ¹¦ÄÜÂë + ÃüÁî×´Ì¬ + Ð£Ñé×Ö½Ú
+  16:Core/BSP/Emm_V5.c ****   */
+  17:Core/BSP/Emm_V5.c **** void Emm_V5_Reset_CurPos_To_Zero(uint8_t addr)
+  18:Core/BSP/Emm_V5.c **** {
+  30              		.loc 1 18 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 16
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 18 1 is_stmt 0 view .LVU1
+  35 0000 00B5     		push	{lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 4
+  38              		.cfi_offset 14, -4
+  39 0002 85B0     		sub	sp, sp, #20
+  40              	.LCFI1:
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 2
+
+
+  41              		.cfi_def_cfa_offset 24
+  19:Core/BSP/Emm_V5.c ****   uint8_t cmd[16] = {0};
+  42              		.loc 1 19 3 is_stmt 1 view .LVU2
+  43              		.loc 1 19 11 is_stmt 0 view .LVU3
+  44 0004 0023     		movs	r3, #0
+  45 0006 0093     		str	r3, [sp]
+  46 0008 0193     		str	r3, [sp, #4]
+  47 000a 0293     		str	r3, [sp, #8]
+  48 000c 0393     		str	r3, [sp, #12]
+  20:Core/BSP/Emm_V5.c ****   
+  21:Core/BSP/Emm_V5.c ****   // ×°ÔØÃüÁî
+  22:Core/BSP/Emm_V5.c ****   cmd[0] =  addr;                       // µØÖ·
+  49              		.loc 1 22 3 is_stmt 1 view .LVU4
+  50              		.loc 1 22 10 is_stmt 0 view .LVU5
+  51 000e 8DF80000 		strb	r0, [sp]
+  23:Core/BSP/Emm_V5.c ****   cmd[1] =  0x0A;                       // ¹¦ÄÜÂë
+  52              		.loc 1 23 3 is_stmt 1 view .LVU6
+  53              		.loc 1 23 10 is_stmt 0 view .LVU7
+  54 0012 0A23     		movs	r3, #10
+  55 0014 8DF80130 		strb	r3, [sp, #1]
+  24:Core/BSP/Emm_V5.c ****   cmd[2] =  0x6D;                       // ¸¨ÖúÂë
+  56              		.loc 1 24 3 is_stmt 1 view .LVU8
+  57              		.loc 1 24 10 is_stmt 0 view .LVU9
+  58 0018 6D23     		movs	r3, #109
+  59 001a 8DF80230 		strb	r3, [sp, #2]
+  25:Core/BSP/Emm_V5.c ****   cmd[3] =  0x6B;                       // Ð£Ñé×Ö½Ú
+  60              		.loc 1 25 3 is_stmt 1 view .LVU10
+  61              		.loc 1 25 10 is_stmt 0 view .LVU11
+  62 001e 6B23     		movs	r3, #107
+  63 0020 8DF80330 		strb	r3, [sp, #3]
+  26:Core/BSP/Emm_V5.c ****   
+  27:Core/BSP/Emm_V5.c ****   // ·¢ËÍÃüÁî
+  28:Core/BSP/Emm_V5.c ****   usart_SendCmd(cmd, 4);
+  64              		.loc 1 28 3 is_stmt 1 view .LVU12
+  65 0024 0421     		movs	r1, #4
+  66 0026 6846     		mov	r0, sp
+  67              	.LVL1:
+  68              		.loc 1 28 3 is_stmt 0 view .LVU13
+  69 0028 FFF7FEFF 		bl	usart_SendCmd
+  70              	.LVL2:
+  29:Core/BSP/Emm_V5.c **** }
+  71              		.loc 1 29 1 view .LVU14
+  72 002c 05B0     		add	sp, sp, #20
+  73              	.LCFI2:
+  74              		.cfi_def_cfa_offset 4
+  75              		@ sp needed
+  76 002e 5DF804FB 		ldr	pc, [sp], #4
+  77              		.cfi_endproc
+  78              	.LFE0:
+  80              		.section	.text.Emm_V5_Reset_Clog_Pro,"ax",%progbits
+  81              		.align	1
+  82              		.global	Emm_V5_Reset_Clog_Pro
+  83              		.syntax unified
+  84              		.thumb
+  85              		.thumb_func
+  87              	Emm_V5_Reset_Clog_Pro:
+  88              	.LVL3:
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 3
+
+
+  89              	.LFB1:
+  30:Core/BSP/Emm_V5.c **** 
+  31:Core/BSP/Emm_V5.c **** /**
+  32:Core/BSP/Emm_V5.c ****   * @brief    ½â³ý¶Â×ª±£»¤
+  33:Core/BSP/Emm_V5.c ****   * @param    addr  £ºµç»úµØÖ·
+  34:Core/BSP/Emm_V5.c ****   * @retval   µØÖ· + ¹¦ÄÜÂë + ÃüÁî×´Ì¬ + Ð£Ñé×Ö½Ú
+  35:Core/BSP/Emm_V5.c ****   */
+  36:Core/BSP/Emm_V5.c **** void Emm_V5_Reset_Clog_Pro(uint8_t addr)
+  37:Core/BSP/Emm_V5.c **** {
+  90              		.loc 1 37 1 is_stmt 1 view -0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 16
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              		.loc 1 37 1 is_stmt 0 view .LVU16
+  95 0000 00B5     		push	{lr}
+  96              	.LCFI3:
+  97              		.cfi_def_cfa_offset 4
+  98              		.cfi_offset 14, -4
+  99 0002 85B0     		sub	sp, sp, #20
+ 100              	.LCFI4:
+ 101              		.cfi_def_cfa_offset 24
+  38:Core/BSP/Emm_V5.c ****   uint8_t cmd[16] = {0};
+ 102              		.loc 1 38 3 is_stmt 1 view .LVU17
+ 103              		.loc 1 38 11 is_stmt 0 view .LVU18
+ 104 0004 0023     		movs	r3, #0
+ 105 0006 0093     		str	r3, [sp]
+ 106 0008 0193     		str	r3, [sp, #4]
+ 107 000a 0293     		str	r3, [sp, #8]
+ 108 000c 0393     		str	r3, [sp, #12]
+  39:Core/BSP/Emm_V5.c ****   
+  40:Core/BSP/Emm_V5.c ****   // ×°ÔØÃüÁî
+  41:Core/BSP/Emm_V5.c ****   cmd[0] =  addr;                       // µØÖ·
+ 109              		.loc 1 41 3 is_stmt 1 view .LVU19
+ 110              		.loc 1 41 10 is_stmt 0 view .LVU20
+ 111 000e 8DF80000 		strb	r0, [sp]
+  42:Core/BSP/Emm_V5.c ****   cmd[1] =  0x0E;                       // ¹¦ÄÜÂë
+ 112              		.loc 1 42 3 is_stmt 1 view .LVU21
+ 113              		.loc 1 42 10 is_stmt 0 view .LVU22
+ 114 0012 0E23     		movs	r3, #14
+ 115 0014 8DF80130 		strb	r3, [sp, #1]
+  43:Core/BSP/Emm_V5.c ****   cmd[2] =  0x52;                       // ¸¨ÖúÂë
+ 116              		.loc 1 43 3 is_stmt 1 view .LVU23
+ 117              		.loc 1 43 10 is_stmt 0 view .LVU24
+ 118 0018 5223     		movs	r3, #82
+ 119 001a 8DF80230 		strb	r3, [sp, #2]
+  44:Core/BSP/Emm_V5.c ****   cmd[3] =  0x6B;                       // Ð£Ñé×Ö½Ú
+ 120              		.loc 1 44 3 is_stmt 1 view .LVU25
+ 121              		.loc 1 44 10 is_stmt 0 view .LVU26
+ 122 001e 6B23     		movs	r3, #107
+ 123 0020 8DF80330 		strb	r3, [sp, #3]
+  45:Core/BSP/Emm_V5.c ****   
+  46:Core/BSP/Emm_V5.c ****   // ·¢ËÍÃüÁî
+  47:Core/BSP/Emm_V5.c ****   usart_SendCmd(cmd, 4);
+ 124              		.loc 1 47 3 is_stmt 1 view .LVU27
+ 125 0024 0421     		movs	r1, #4
+ 126 0026 6846     		mov	r0, sp
+ 127              	.LVL4:
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 4
+
+
+ 128              		.loc 1 47 3 is_stmt 0 view .LVU28
+ 129 0028 FFF7FEFF 		bl	usart_SendCmd
+ 130              	.LVL5:
+  48:Core/BSP/Emm_V5.c **** }
+ 131              		.loc 1 48 1 view .LVU29
+ 132 002c 05B0     		add	sp, sp, #20
+ 133              	.LCFI5:
+ 134              		.cfi_def_cfa_offset 4
+ 135              		@ sp needed
+ 136 002e 5DF804FB 		ldr	pc, [sp], #4
+ 137              		.cfi_endproc
+ 138              	.LFE1:
+ 140              		.section	.text.Emm_V5_Read_Sys_Params,"ax",%progbits
+ 141              		.align	1
+ 142              		.global	Emm_V5_Read_Sys_Params
+ 143              		.syntax unified
+ 144              		.thumb
+ 145              		.thumb_func
+ 147              	Emm_V5_Read_Sys_Params:
+ 148              	.LVL6:
+ 149              	.LFB2:
+  49:Core/BSP/Emm_V5.c **** 
+  50:Core/BSP/Emm_V5.c **** /**
+  51:Core/BSP/Emm_V5.c ****   * @brief    ¶ÁÈ¡ÏµÍ³²ÎÊý
+  52:Core/BSP/Emm_V5.c ****   * @param    addr  £ºµç»úµØÖ·
+  53:Core/BSP/Emm_V5.c ****   * @param    s     £ºÏµÍ³²ÎÊýÀàÐÍ
+  54:Core/BSP/Emm_V5.c ****   * @retval   µØÖ· + ¹¦ÄÜÂë + ÃüÁî×´Ì¬ + Ð£Ñé×Ö½Ú
+  55:Core/BSP/Emm_V5.c ****   */
+  56:Core/BSP/Emm_V5.c **** void Emm_V5_Read_Sys_Params(uint8_t addr, SysParams_t s)
+  57:Core/BSP/Emm_V5.c **** {
+ 150              		.loc 1 57 1 is_stmt 1 view -0
+ 151              		.cfi_startproc
+ 152              		@ args = 0, pretend = 0, frame = 16
+ 153              		@ frame_needed = 0, uses_anonymous_args = 0
+ 154              		.loc 1 57 1 is_stmt 0 view .LVU31
+ 155 0000 00B5     		push	{lr}
+ 156              	.LCFI6:
+ 157              		.cfi_def_cfa_offset 4
+ 158              		.cfi_offset 14, -4
+ 159 0002 85B0     		sub	sp, sp, #20
+ 160              	.LCFI7:
+ 161              		.cfi_def_cfa_offset 24
+  58:Core/BSP/Emm_V5.c ****   uint8_t i = 0;
+ 162              		.loc 1 58 3 is_stmt 1 view .LVU32
+ 163              	.LVL7:
+  59:Core/BSP/Emm_V5.c ****   uint8_t cmd[16] = {0};
+ 164              		.loc 1 59 3 view .LVU33
+ 165              		.loc 1 59 11 is_stmt 0 view .LVU34
+ 166 0004 0023     		movs	r3, #0
+ 167 0006 0093     		str	r3, [sp]
+ 168 0008 0193     		str	r3, [sp, #4]
+ 169 000a 0293     		str	r3, [sp, #8]
+ 170 000c 0393     		str	r3, [sp, #12]
+  60:Core/BSP/Emm_V5.c ****   
+  61:Core/BSP/Emm_V5.c ****   // ×°ÔØÃüÁî
+  62:Core/BSP/Emm_V5.c ****   cmd[i] = addr; ++i;                   // µØÖ·
+ 171              		.loc 1 62 3 is_stmt 1 view .LVU35
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 5
+
+
+ 172              		.loc 1 62 10 is_stmt 0 view .LVU36
+ 173 000e 8DF80000 		strb	r0, [sp]
+ 174              		.loc 1 62 18 is_stmt 1 view .LVU37
+ 175              	.LVL8:
+  63:Core/BSP/Emm_V5.c **** 
+  64:Core/BSP/Emm_V5.c ****   switch(s)                             // ¹¦ÄÜÂë
+ 176              		.loc 1 64 3 view .LVU38
+ 177 0012 1029     		cmp	r1, #16
+ 178 0014 55D8     		bhi	.L22
+ 179 0016 DFE801F0 		tbb	[pc, r1]
+ 180              	.L8:
+ 181 001a 09       		.byte	(.L21-.L8)/2
+ 182 001b 0E       		.byte	(.L20-.L8)/2
+ 183 001c 13       		.byte	(.L19-.L8)/2
+ 184 001d 17       		.byte	(.L18-.L8)/2
+ 185 001e 54       		.byte	(.L22-.L8)/2
+ 186 001f 1C       		.byte	(.L17-.L8)/2
+ 187 0020 54       		.byte	(.L22-.L8)/2
+ 188 0021 21       		.byte	(.L16-.L8)/2
+ 189 0022 26       		.byte	(.L15-.L8)/2
+ 190 0023 2B       		.byte	(.L14-.L8)/2
+ 191 0024 30       		.byte	(.L13-.L8)/2
+ 192 0025 35       		.byte	(.L12-.L8)/2
+ 193 0026 54       		.byte	(.L22-.L8)/2
+ 194 0027 3A       		.byte	(.L11-.L8)/2
+ 195 0028 44       		.byte	(.L10-.L8)/2
+ 196 0029 4C       		.byte	(.L9-.L8)/2
+ 197 002a 3F       		.byte	(.L7-.L8)/2
+ 198 002b 00       		.p2align 1
+ 199              	.L21:
+  65:Core/BSP/Emm_V5.c ****   {
+  66:Core/BSP/Emm_V5.c ****     case S_VER  : cmd[i] = 0x1F; ++i; break;
+ 200              		.loc 1 66 19 view .LVU39
+ 201              		.loc 1 66 26 is_stmt 0 view .LVU40
+ 202 002c 1F23     		movs	r3, #31
+ 203 002e 8DF80130 		strb	r3, [sp, #1]
+ 204              		.loc 1 66 34 is_stmt 1 view .LVU41
+ 205              	.LVL9:
+ 206              		.loc 1 66 39 view .LVU42
+ 207              		.loc 1 66 34 is_stmt 0 view .LVU43
+ 208 0032 0221     		movs	r1, #2
+ 209              	.LVL10:
+ 210              		.loc 1 66 5 view .LVU44
+ 211 0034 46E0     		b	.L6
+ 212              	.LVL11:
+ 213              	.L20:
+  67:Core/BSP/Emm_V5.c ****     case S_RL   : cmd[i] = 0x20; ++i; break;
+ 214              		.loc 1 67 19 is_stmt 1 view .LVU45
+ 215              		.loc 1 67 26 is_stmt 0 view .LVU46
+ 216 0036 2023     		movs	r3, #32
+ 217 0038 8DF80130 		strb	r3, [sp, #1]
+ 218              		.loc 1 67 34 is_stmt 1 view .LVU47
+ 219              	.LVL12:
+ 220              		.loc 1 67 39 view .LVU48
+ 221              		.loc 1 67 34 is_stmt 0 view .LVU49
+ 222 003c 0221     		movs	r1, #2
+ 223              	.LVL13:
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 6
+
+
+ 224              		.loc 1 67 5 view .LVU50
+ 225 003e 41E0     		b	.L6
+ 226              	.LVL14:
+ 227              	.L19:
+  68:Core/BSP/Emm_V5.c ****     case S_PID  : cmd[i] = 0x21; ++i; break;
+ 228              		.loc 1 68 19 is_stmt 1 view .LVU51
+ 229              		.loc 1 68 26 is_stmt 0 view .LVU52
+ 230 0040 2123     		movs	r3, #33
+ 231 0042 8DF80130 		strb	r3, [sp, #1]
+ 232              		.loc 1 68 34 is_stmt 1 view .LVU53
+ 233              	.LVL15:
+ 234              		.loc 1 68 39 view .LVU54
+ 235              		.loc 1 68 5 is_stmt 0 view .LVU55
+ 236 0046 3DE0     		b	.L6
+ 237              	.LVL16:
+ 238              	.L18:
+  69:Core/BSP/Emm_V5.c ****     case S_VBUS : cmd[i] = 0x24; ++i; break;
+ 239              		.loc 1 69 19 is_stmt 1 view .LVU56
+ 240              		.loc 1 69 26 is_stmt 0 view .LVU57
+ 241 0048 2423     		movs	r3, #36
+ 242 004a 8DF80130 		strb	r3, [sp, #1]
+ 243              		.loc 1 69 34 is_stmt 1 view .LVU58
+ 244              	.LVL17:
+ 245              		.loc 1 69 39 view .LVU59
+ 246              		.loc 1 69 34 is_stmt 0 view .LVU60
+ 247 004e 0221     		movs	r1, #2
+ 248              	.LVL18:
+ 249              		.loc 1 69 5 view .LVU61
+ 250 0050 38E0     		b	.L6
+ 251              	.LVL19:
+ 252              	.L17:
+  70:Core/BSP/Emm_V5.c ****     case S_CPHA : cmd[i] = 0x27; ++i; break;
+ 253              		.loc 1 70 19 is_stmt 1 view .LVU62
+ 254              		.loc 1 70 26 is_stmt 0 view .LVU63
+ 255 0052 2723     		movs	r3, #39
+ 256 0054 8DF80130 		strb	r3, [sp, #1]
+ 257              		.loc 1 70 34 is_stmt 1 view .LVU64
+ 258              	.LVL20:
+ 259              		.loc 1 70 39 view .LVU65
+ 260              		.loc 1 70 34 is_stmt 0 view .LVU66
+ 261 0058 0221     		movs	r1, #2
+ 262              	.LVL21:
+ 263              		.loc 1 70 5 view .LVU67
+ 264 005a 33E0     		b	.L6
+ 265              	.LVL22:
+ 266              	.L16:
+  71:Core/BSP/Emm_V5.c ****     case S_ENCL : cmd[i] = 0x31; ++i; break;
+ 267              		.loc 1 71 19 is_stmt 1 view .LVU68
+ 268              		.loc 1 71 26 is_stmt 0 view .LVU69
+ 269 005c 3123     		movs	r3, #49
+ 270 005e 8DF80130 		strb	r3, [sp, #1]
+ 271              		.loc 1 71 34 is_stmt 1 view .LVU70
+ 272              	.LVL23:
+ 273              		.loc 1 71 39 view .LVU71
+ 274              		.loc 1 71 34 is_stmt 0 view .LVU72
+ 275 0062 0221     		movs	r1, #2
+ 276              	.LVL24:
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 7
+
+
+ 277              		.loc 1 71 5 view .LVU73
+ 278 0064 2EE0     		b	.L6
+ 279              	.LVL25:
+ 280              	.L15:
+  72:Core/BSP/Emm_V5.c ****     case S_TPOS : cmd[i] = 0x33; ++i; break;
+ 281              		.loc 1 72 19 is_stmt 1 view .LVU74
+ 282              		.loc 1 72 26 is_stmt 0 view .LVU75
+ 283 0066 3323     		movs	r3, #51
+ 284 0068 8DF80130 		strb	r3, [sp, #1]
+ 285              		.loc 1 72 34 is_stmt 1 view .LVU76
+ 286              	.LVL26:
+ 287              		.loc 1 72 39 view .LVU77
+ 288              		.loc 1 72 34 is_stmt 0 view .LVU78
+ 289 006c 0221     		movs	r1, #2
+ 290              	.LVL27:
+ 291              		.loc 1 72 5 view .LVU79
+ 292 006e 29E0     		b	.L6
+ 293              	.LVL28:
+ 294              	.L14:
+  73:Core/BSP/Emm_V5.c ****     case S_VEL  : cmd[i] = 0x35; ++i; break;
+ 295              		.loc 1 73 19 is_stmt 1 view .LVU80
+ 296              		.loc 1 73 26 is_stmt 0 view .LVU81
+ 297 0070 3523     		movs	r3, #53
+ 298 0072 8DF80130 		strb	r3, [sp, #1]
+ 299              		.loc 1 73 34 is_stmt 1 view .LVU82
+ 300              	.LVL29:
+ 301              		.loc 1 73 39 view .LVU83
+ 302              		.loc 1 73 34 is_stmt 0 view .LVU84
+ 303 0076 0221     		movs	r1, #2
+ 304              	.LVL30:
+ 305              		.loc 1 73 5 view .LVU85
+ 306 0078 24E0     		b	.L6
+ 307              	.LVL31:
+ 308              	.L13:
+  74:Core/BSP/Emm_V5.c ****     case S_CPOS : cmd[i] = 0x36; ++i; break;
+ 309              		.loc 1 74 19 is_stmt 1 view .LVU86
+ 310              		.loc 1 74 26 is_stmt 0 view .LVU87
+ 311 007a 3623     		movs	r3, #54
+ 312 007c 8DF80130 		strb	r3, [sp, #1]
+ 313              		.loc 1 74 34 is_stmt 1 view .LVU88
+ 314              	.LVL32:
+ 315              		.loc 1 74 39 view .LVU89
+ 316              		.loc 1 74 34 is_stmt 0 view .LVU90
+ 317 0080 0221     		movs	r1, #2
+ 318              	.LVL33:
+ 319              		.loc 1 74 5 view .LVU91
+ 320 0082 1FE0     		b	.L6
+ 321              	.LVL34:
+ 322              	.L12:
+  75:Core/BSP/Emm_V5.c ****     case S_PERR : cmd[i] = 0x37; ++i; break;
+ 323              		.loc 1 75 19 is_stmt 1 view .LVU92
+ 324              		.loc 1 75 26 is_stmt 0 view .LVU93
+ 325 0084 3723     		movs	r3, #55
+ 326 0086 8DF80130 		strb	r3, [sp, #1]
+ 327              		.loc 1 75 34 is_stmt 1 view .LVU94
+ 328              	.LVL35:
+ 329              		.loc 1 75 39 view .LVU95
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 8
+
+
+ 330              		.loc 1 75 34 is_stmt 0 view .LVU96
+ 331 008a 0221     		movs	r1, #2
+ 332              	.LVL36:
+ 333              		.loc 1 75 5 view .LVU97
+ 334 008c 1AE0     		b	.L6
+ 335              	.LVL37:
+ 336              	.L11:
+  76:Core/BSP/Emm_V5.c ****     case S_FLAG : cmd[i] = 0x3A; ++i; break;
+ 337              		.loc 1 76 19 is_stmt 1 view .LVU98
+ 338              		.loc 1 76 26 is_stmt 0 view .LVU99
+ 339 008e 3A23     		movs	r3, #58
+ 340 0090 8DF80130 		strb	r3, [sp, #1]
+ 341              		.loc 1 76 34 is_stmt 1 view .LVU100
+ 342              	.LVL38:
+ 343              		.loc 1 76 39 view .LVU101
+ 344              		.loc 1 76 34 is_stmt 0 view .LVU102
+ 345 0094 0221     		movs	r1, #2
+ 346              	.LVL39:
+ 347              		.loc 1 76 5 view .LVU103
+ 348 0096 15E0     		b	.L6
+ 349              	.LVL40:
+ 350              	.L7:
+  77:Core/BSP/Emm_V5.c ****     case S_ORG  : cmd[i] = 0x3B; ++i; break;
+ 351              		.loc 1 77 19 is_stmt 1 view .LVU104
+ 352              		.loc 1 77 26 is_stmt 0 view .LVU105
+ 353 0098 3B23     		movs	r3, #59
+ 354 009a 8DF80130 		strb	r3, [sp, #1]
+ 355              		.loc 1 77 34 is_stmt 1 view .LVU106
+ 356              	.LVL41:
+ 357              		.loc 1 77 39 view .LVU107
+ 358              		.loc 1 77 34 is_stmt 0 view .LVU108
+ 359 009e 0221     		movs	r1, #2
+ 360              	.LVL42:
+ 361              		.loc 1 77 5 view .LVU109
+ 362 00a0 10E0     		b	.L6
+ 363              	.LVL43:
+ 364              	.L10:
+  78:Core/BSP/Emm_V5.c ****     case S_Conf : cmd[i] = 0x42; ++i; cmd[i] = 0x6C; ++i; break;
+ 365              		.loc 1 78 19 is_stmt 1 view .LVU110
+ 366              		.loc 1 78 26 is_stmt 0 view .LVU111
+ 367 00a2 4223     		movs	r3, #66
+ 368 00a4 8DF80130 		strb	r3, [sp, #1]
+ 369              		.loc 1 78 34 is_stmt 1 view .LVU112
+ 370              	.LVL44:
+ 371              		.loc 1 78 39 view .LVU113
+ 372              		.loc 1 78 46 is_stmt 0 view .LVU114
+ 373 00a8 6C23     		movs	r3, #108
+ 374 00aa 8DF80230 		strb	r3, [sp, #2]
+ 375              		.loc 1 78 54 is_stmt 1 view .LVU115
+ 376              	.LVL45:
+ 377              		.loc 1 78 59 view .LVU116
+ 378              		.loc 1 78 54 is_stmt 0 view .LVU117
+ 379 00ae 0321     		movs	r1, #3
+ 380              	.LVL46:
+ 381              		.loc 1 78 5 view .LVU118
+ 382 00b0 08E0     		b	.L6
+ 383              	.LVL47:
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 9
+
+
+ 384              	.L9:
+  79:Core/BSP/Emm_V5.c ****     case S_State: cmd[i] = 0x43; ++i; cmd[i] = 0x7A; ++i; break;
+ 385              		.loc 1 79 19 is_stmt 1 view .LVU119
+ 386              		.loc 1 79 26 is_stmt 0 view .LVU120
+ 387 00b2 4323     		movs	r3, #67
+ 388 00b4 8DF80130 		strb	r3, [sp, #1]
+ 389              		.loc 1 79 34 is_stmt 1 view .LVU121
+ 390              	.LVL48:
+ 391              		.loc 1 79 39 view .LVU122
+ 392              		.loc 1 79 46 is_stmt 0 view .LVU123
+ 393 00b8 7A23     		movs	r3, #122
+ 394 00ba 8DF80230 		strb	r3, [sp, #2]
+ 395              		.loc 1 79 54 is_stmt 1 view .LVU124
+ 396              	.LVL49:
+ 397              		.loc 1 79 59 view .LVU125
+ 398              		.loc 1 79 54 is_stmt 0 view .LVU126
+ 399 00be 0321     		movs	r1, #3
+ 400              	.LVL50:
+ 401              		.loc 1 79 5 view .LVU127
+ 402 00c0 00E0     		b	.L6
+ 403              	.LVL51:
+ 404              	.L22:
+  64:Core/BSP/Emm_V5.c ****   {
+ 405              		.loc 1 64 3 view .LVU128
+ 406 00c2 0121     		movs	r1, #1
+ 407              	.LVL52:
+ 408              	.L6:
+  80:Core/BSP/Emm_V5.c ****     default: break;
+  81:Core/BSP/Emm_V5.c ****   }
+  82:Core/BSP/Emm_V5.c **** 
+  83:Core/BSP/Emm_V5.c ****   cmd[i] = 0x6B; ++i;                   // Ð£Ñé×Ö½Ú
+ 409              		.loc 1 83 3 is_stmt 1 view .LVU129
+ 410              		.loc 1 83 10 is_stmt 0 view .LVU130
+ 411 00c4 01F11003 		add	r3, r1, #16
+ 412 00c8 6B44     		add	r3, sp, r3
+ 413 00ca 6B22     		movs	r2, #107
+ 414 00cc 03F8102C 		strb	r2, [r3, #-16]
+ 415              		.loc 1 83 18 is_stmt 1 view .LVU131
+ 416 00d0 0131     		adds	r1, r1, #1
+ 417              	.LVL53:
+  84:Core/BSP/Emm_V5.c ****   
+  85:Core/BSP/Emm_V5.c ****   // ·¢ËÍÃüÁî
+  86:Core/BSP/Emm_V5.c ****   usart_SendCmd(cmd, i);
+ 418              		.loc 1 86 3 view .LVU132
+ 419 00d2 C9B2     		uxtb	r1, r1
+ 420              		.loc 1 86 3 is_stmt 0 view .LVU133
+ 421 00d4 6846     		mov	r0, sp
+ 422              	.LVL54:
+ 423              		.loc 1 86 3 view .LVU134
+ 424 00d6 FFF7FEFF 		bl	usart_SendCmd
+ 425              	.LVL55:
+  87:Core/BSP/Emm_V5.c **** }
+ 426              		.loc 1 87 1 view .LVU135
+ 427 00da 05B0     		add	sp, sp, #20
+ 428              	.LCFI8:
+ 429              		.cfi_def_cfa_offset 4
+ 430              		@ sp needed
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 10
+
+
+ 431 00dc 5DF804FB 		ldr	pc, [sp], #4
+ 432              		.cfi_endproc
+ 433              	.LFE2:
+ 435              		.section	.text.Emm_V5_Modify_Ctrl_Mode,"ax",%progbits
+ 436              		.align	1
+ 437              		.global	Emm_V5_Modify_Ctrl_Mode
+ 438              		.syntax unified
+ 439              		.thumb
+ 440              		.thumb_func
+ 442              	Emm_V5_Modify_Ctrl_Mode:
+ 443              	.LVL56:
+ 444              	.LFB3:
+  88:Core/BSP/Emm_V5.c **** 
+  89:Core/BSP/Emm_V5.c **** /**
+  90:Core/BSP/Emm_V5.c ****   * @brief    ÐÞ¸Ä¿ª»·/±Õ»·¿ØÖÆÄ£Ê½
+  91:Core/BSP/Emm_V5.c ****   * @param    addr     £ºµç»úµØÖ·
+  92:Core/BSP/Emm_V5.c ****   * @param    svF      £ºÊÇ·ñ´æ´¢±êÖ¾£¬falseÎª²»´æ´¢£¬trueÎª´æ´¢
+  93:Core/BSP/Emm_V5.c ****   * @param    ctrl_mode£º¿ØÖÆÄ£Ê½£¨¶ÔÓ¦ÆÁÄ»ÉÏµÄP_Pul²Ëµ¥£©£¬0ÊÇ¹Ø±ÕÂö³åÊäÈëÒý½Å£¬1ÊÇ¿ª»·Ä£Ê½£¬2ÊÇ±Õ
+  94:Core/BSP/Emm_V5.c ****   * @retval   µØÖ· + ¹¦ÄÜÂë + ÃüÁî×´Ì¬ + Ð£Ñé×Ö½Ú
+  95:Core/BSP/Emm_V5.c ****   */
+  96:Core/BSP/Emm_V5.c **** void Emm_V5_Modify_Ctrl_Mode(uint8_t addr, bool svF, uint8_t ctrl_mode)
+  97:Core/BSP/Emm_V5.c **** {
+ 445              		.loc 1 97 1 is_stmt 1 view -0
+ 446              		.cfi_startproc
+ 447              		@ args = 0, pretend = 0, frame = 16
+ 448              		@ frame_needed = 0, uses_anonymous_args = 0
+ 449              		.loc 1 97 1 is_stmt 0 view .LVU137
+ 450 0000 00B5     		push	{lr}
+ 451              	.LCFI9:
+ 452              		.cfi_def_cfa_offset 4
+ 453              		.cfi_offset 14, -4
+ 454 0002 85B0     		sub	sp, sp, #20
+ 455              	.LCFI10:
+ 456              		.cfi_def_cfa_offset 24
+  98:Core/BSP/Emm_V5.c ****   uint8_t cmd[16] = {0};
+ 457              		.loc 1 98 3 is_stmt 1 view .LVU138
+ 458              		.loc 1 98 11 is_stmt 0 view .LVU139
+ 459 0004 0023     		movs	r3, #0
+ 460 0006 0093     		str	r3, [sp]
+ 461 0008 0193     		str	r3, [sp, #4]
+ 462 000a 0293     		str	r3, [sp, #8]
+ 463 000c 0393     		str	r3, [sp, #12]
+  99:Core/BSP/Emm_V5.c ****   
+ 100:Core/BSP/Emm_V5.c ****   // ×°ÔØÃüÁî
+ 101:Core/BSP/Emm_V5.c ****   cmd[0] =  addr;                       // µØÖ·
+ 464              		.loc 1 101 3 is_stmt 1 view .LVU140
+ 465              		.loc 1 101 10 is_stmt 0 view .LVU141
+ 466 000e 8DF80000 		strb	r0, [sp]
+ 102:Core/BSP/Emm_V5.c ****   cmd[1] =  0x46;                       // ¹¦ÄÜÂë
+ 467              		.loc 1 102 3 is_stmt 1 view .LVU142
+ 468              		.loc 1 102 10 is_stmt 0 view .LVU143
+ 469 0012 4623     		movs	r3, #70
+ 470 0014 8DF80130 		strb	r3, [sp, #1]
+ 103:Core/BSP/Emm_V5.c ****   cmd[2] =  0x69;                       // ¸¨ÖúÂë
+ 471              		.loc 1 103 3 is_stmt 1 view .LVU144
+ 472              		.loc 1 103 10 is_stmt 0 view .LVU145
+ 473 0018 6923     		movs	r3, #105
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 11
+
+
+ 474 001a 8DF80230 		strb	r3, [sp, #2]
+ 104:Core/BSP/Emm_V5.c ****   cmd[3] =  svF;                        // ÊÇ·ñ´æ´¢±êÖ¾£¬falseÎª²»´æ´¢£¬trueÎª´æ´¢
+ 475              		.loc 1 104 3 is_stmt 1 view .LVU146
+ 476              		.loc 1 104 10 is_stmt 0 view .LVU147
+ 477 001e 8DF80310 		strb	r1, [sp, #3]
+ 105:Core/BSP/Emm_V5.c ****   cmd[4] =  ctrl_mode;                  // ¿ØÖÆÄ£Ê½£¨¶ÔÓ¦ÆÁÄ»ÉÏµÄP_Pul²Ëµ¥£©£¬0ÊÇ¹Ø±ÕÂö³åÊäÈëÒý½Å£¬
+ 478              		.loc 1 105 3 is_stmt 1 view .LVU148
+ 479              		.loc 1 105 10 is_stmt 0 view .LVU149
+ 480 0022 8DF80420 		strb	r2, [sp, #4]
+ 106:Core/BSP/Emm_V5.c ****   cmd[5] =  0x6B;                       // Ð£Ñé×Ö½Ú
+ 481              		.loc 1 106 3 is_stmt 1 view .LVU150
+ 482              		.loc 1 106 10 is_stmt 0 view .LVU151
+ 483 0026 6B23     		movs	r3, #107
+ 484 0028 8DF80530 		strb	r3, [sp, #5]
+ 107:Core/BSP/Emm_V5.c ****   
+ 108:Core/BSP/Emm_V5.c ****   // ·¢ËÍÃüÁî
+ 109:Core/BSP/Emm_V5.c ****   usart_SendCmd(cmd, 6);
+ 485              		.loc 1 109 3 is_stmt 1 view .LVU152
+ 486 002c 0621     		movs	r1, #6
+ 487              	.LVL57:
+ 488              		.loc 1 109 3 is_stmt 0 view .LVU153
+ 489 002e 6846     		mov	r0, sp
+ 490              	.LVL58:
+ 491              		.loc 1 109 3 view .LVU154
+ 492 0030 FFF7FEFF 		bl	usart_SendCmd
+ 493              	.LVL59:
+ 110:Core/BSP/Emm_V5.c **** }
+ 494              		.loc 1 110 1 view .LVU155
+ 495 0034 05B0     		add	sp, sp, #20
+ 496              	.LCFI11:
+ 497              		.cfi_def_cfa_offset 4
+ 498              		@ sp needed
+ 499 0036 5DF804FB 		ldr	pc, [sp], #4
+ 500              		.cfi_endproc
+ 501              	.LFE3:
+ 503              		.section	.text.Emm_V5_En_Control,"ax",%progbits
+ 504              		.align	1
+ 505              		.global	Emm_V5_En_Control
+ 506              		.syntax unified
+ 507              		.thumb
+ 508              		.thumb_func
+ 510              	Emm_V5_En_Control:
+ 511              	.LVL60:
+ 512              	.LFB4:
+ 111:Core/BSP/Emm_V5.c **** 
+ 112:Core/BSP/Emm_V5.c **** /**
+ 113:Core/BSP/Emm_V5.c ****   * @brief    Ê¹ÄÜÐÅºÅ¿ØÖÆ
+ 114:Core/BSP/Emm_V5.c ****   * @param    addr  £ºµç»úµØÖ·
+ 115:Core/BSP/Emm_V5.c ****   * @param    state £ºÊ¹ÄÜ×´Ì¬     £¬trueÎªÊ¹ÄÜµç»ú£¬falseÎª¹Ø±Õµç»ú
+ 116:Core/BSP/Emm_V5.c ****   * @param    snF   £º¶à»úÍ¬²½±êÖ¾ £¬falseÎª²»ÆôÓÃ£¬trueÎªÆôÓÃ
+ 117:Core/BSP/Emm_V5.c ****   * @retval   µØÖ· + ¹¦ÄÜÂë + ÃüÁî×´Ì¬ + Ð£Ñé×Ö½Ú
+ 118:Core/BSP/Emm_V5.c ****   */
+ 119:Core/BSP/Emm_V5.c **** void Emm_V5_En_Control(uint8_t addr, bool state, bool snF)
+ 120:Core/BSP/Emm_V5.c **** {
+ 513              		.loc 1 120 1 is_stmt 1 view -0
+ 514              		.cfi_startproc
+ 515              		@ args = 0, pretend = 0, frame = 16
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 12
+
+
+ 516              		@ frame_needed = 0, uses_anonymous_args = 0
+ 517              		.loc 1 120 1 is_stmt 0 view .LVU157
+ 518 0000 00B5     		push	{lr}
+ 519              	.LCFI12:
+ 520              		.cfi_def_cfa_offset 4
+ 521              		.cfi_offset 14, -4
+ 522 0002 85B0     		sub	sp, sp, #20
+ 523              	.LCFI13:
+ 524              		.cfi_def_cfa_offset 24
+ 121:Core/BSP/Emm_V5.c ****   uint8_t cmd[16] = {0};
+ 525              		.loc 1 121 3 is_stmt 1 view .LVU158
+ 526              		.loc 1 121 11 is_stmt 0 view .LVU159
+ 527 0004 0023     		movs	r3, #0
+ 528 0006 0093     		str	r3, [sp]
+ 529 0008 0193     		str	r3, [sp, #4]
+ 530 000a 0293     		str	r3, [sp, #8]
+ 531 000c 0393     		str	r3, [sp, #12]
+ 122:Core/BSP/Emm_V5.c ****   
+ 123:Core/BSP/Emm_V5.c ****   // ×°ÔØÃüÁî
+ 124:Core/BSP/Emm_V5.c ****   cmd[0] =  addr;                       // µØÖ·
+ 532              		.loc 1 124 3 is_stmt 1 view .LVU160
+ 533              		.loc 1 124 10 is_stmt 0 view .LVU161
+ 534 000e 8DF80000 		strb	r0, [sp]
+ 125:Core/BSP/Emm_V5.c ****   cmd[1] =  0xF3;                       // ¹¦ÄÜÂë
+ 535              		.loc 1 125 3 is_stmt 1 view .LVU162
+ 536              		.loc 1 125 10 is_stmt 0 view .LVU163
+ 537 0012 F323     		movs	r3, #243
+ 538 0014 8DF80130 		strb	r3, [sp, #1]
+ 126:Core/BSP/Emm_V5.c ****   cmd[2] =  0xAB;                       // ¸¨ÖúÂë
+ 539              		.loc 1 126 3 is_stmt 1 view .LVU164
+ 540              		.loc 1 126 10 is_stmt 0 view .LVU165
+ 541 0018 AB23     		movs	r3, #171
+ 542 001a 8DF80230 		strb	r3, [sp, #2]
+ 127:Core/BSP/Emm_V5.c ****   cmd[3] =  (uint8_t)state;             // Ê¹ÄÜ×´Ì¬
+ 543              		.loc 1 127 3 is_stmt 1 view .LVU166
+ 544              		.loc 1 127 10 is_stmt 0 view .LVU167
+ 545 001e 8DF80310 		strb	r1, [sp, #3]
+ 128:Core/BSP/Emm_V5.c ****   cmd[4] =  snF;                        // ¶à»úÍ¬²½ÔË¶¯±êÖ¾
+ 546              		.loc 1 128 3 is_stmt 1 view .LVU168
+ 547              		.loc 1 128 10 is_stmt 0 view .LVU169
+ 548 0022 8DF80420 		strb	r2, [sp, #4]
+ 129:Core/BSP/Emm_V5.c ****   cmd[5] =  0x6B;                       // Ð£Ñé×Ö½Ú
+ 549              		.loc 1 129 3 is_stmt 1 view .LVU170
+ 550              		.loc 1 129 10 is_stmt 0 view .LVU171
+ 551 0026 6B23     		movs	r3, #107
+ 552 0028 8DF80530 		strb	r3, [sp, #5]
+ 130:Core/BSP/Emm_V5.c ****   
+ 131:Core/BSP/Emm_V5.c ****   // ·¢ËÍÃüÁî
+ 132:Core/BSP/Emm_V5.c ****   usart_SendCmd(cmd, 6);
+ 553              		.loc 1 132 3 is_stmt 1 view .LVU172
+ 554 002c 0621     		movs	r1, #6
+ 555              	.LVL61:
+ 556              		.loc 1 132 3 is_stmt 0 view .LVU173
+ 557 002e 6846     		mov	r0, sp
+ 558              	.LVL62:
+ 559              		.loc 1 132 3 view .LVU174
+ 560 0030 FFF7FEFF 		bl	usart_SendCmd
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 13
+
+
+ 561              	.LVL63:
+ 133:Core/BSP/Emm_V5.c **** }
+ 562              		.loc 1 133 1 view .LVU175
+ 563 0034 05B0     		add	sp, sp, #20
+ 564              	.LCFI14:
+ 565              		.cfi_def_cfa_offset 4
+ 566              		@ sp needed
+ 567 0036 5DF804FB 		ldr	pc, [sp], #4
+ 568              		.cfi_endproc
+ 569              	.LFE4:
+ 571              		.section	.text.Emm_V5_Vel_Control,"ax",%progbits
+ 572              		.align	1
+ 573              		.global	Emm_V5_Vel_Control
+ 574              		.syntax unified
+ 575              		.thumb
+ 576              		.thumb_func
+ 578              	Emm_V5_Vel_Control:
+ 579              	.LVL64:
+ 580              	.LFB5:
+ 134:Core/BSP/Emm_V5.c **** 
+ 135:Core/BSP/Emm_V5.c **** /**
+ 136:Core/BSP/Emm_V5.c ****   * @brief    ËÙ¶ÈÄ£Ê½
+ 137:Core/BSP/Emm_V5.c ****   * @param    addr£ºµç»úµØÖ·
+ 138:Core/BSP/Emm_V5.c ****   * @param    dir £º·½Ïò       £¬0ÎªCW£¬ÆäÓàÖµÎªCCW
+ 139:Core/BSP/Emm_V5.c ****   * @param    vel £ºËÙ¶È       £¬·¶Î§0 - 5000RPM
+ 140:Core/BSP/Emm_V5.c ****   * @param    acc £º¼ÓËÙ¶È     £¬·¶Î§0 - 255£¬×¢Òâ£º0ÊÇÖ±½ÓÆô¶¯
+ 141:Core/BSP/Emm_V5.c ****   * @param    snF £º¶à»úÍ¬²½±êÖ¾£¬falseÎª²»ÆôÓÃ£¬trueÎªÆôÓÃ
+ 142:Core/BSP/Emm_V5.c ****   * @retval   µØÖ· + ¹¦ÄÜÂë + ÃüÁî×´Ì¬ + Ð£Ñé×Ö½Ú
+ 143:Core/BSP/Emm_V5.c ****   */
+ 144:Core/BSP/Emm_V5.c **** void Emm_V5_Vel_Control(uint8_t addr, uint8_t dir, uint16_t vel, uint8_t acc, bool snF)
+ 145:Core/BSP/Emm_V5.c **** {
+ 581              		.loc 1 145 1 is_stmt 1 view -0
+ 582              		.cfi_startproc
+ 583              		@ args = 4, pretend = 0, frame = 16
+ 584              		@ frame_needed = 0, uses_anonymous_args = 0
+ 585              		.loc 1 145 1 is_stmt 0 view .LVU177
+ 586 0000 10B5     		push	{r4, lr}
+ 587              	.LCFI15:
+ 588              		.cfi_def_cfa_offset 8
+ 589              		.cfi_offset 4, -8
+ 590              		.cfi_offset 14, -4
+ 591 0002 84B0     		sub	sp, sp, #16
+ 592              	.LCFI16:
+ 593              		.cfi_def_cfa_offset 24
+ 146:Core/BSP/Emm_V5.c ****   uint8_t cmd[16] = {0};
+ 594              		.loc 1 146 3 is_stmt 1 view .LVU178
+ 595              		.loc 1 146 11 is_stmt 0 view .LVU179
+ 596 0004 0024     		movs	r4, #0
+ 597 0006 0094     		str	r4, [sp]
+ 598 0008 0194     		str	r4, [sp, #4]
+ 599 000a 0294     		str	r4, [sp, #8]
+ 600 000c 0394     		str	r4, [sp, #12]
+ 147:Core/BSP/Emm_V5.c **** 
+ 148:Core/BSP/Emm_V5.c ****   // ×°ÔØÃüÁî
+ 149:Core/BSP/Emm_V5.c ****   cmd[0] =  addr;                       // µØÖ·
+ 601              		.loc 1 149 3 is_stmt 1 view .LVU180
+ 602              		.loc 1 149 10 is_stmt 0 view .LVU181
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 14
+
+
+ 603 000e 8DF80000 		strb	r0, [sp]
+ 150:Core/BSP/Emm_V5.c ****   cmd[1] =  0xF6;                       // ¹¦ÄÜÂë
+ 604              		.loc 1 150 3 is_stmt 1 view .LVU182
+ 605              		.loc 1 150 10 is_stmt 0 view .LVU183
+ 606 0012 F620     		movs	r0, #246
+ 607              	.LVL65:
+ 608              		.loc 1 150 10 view .LVU184
+ 609 0014 8DF80100 		strb	r0, [sp, #1]
+ 151:Core/BSP/Emm_V5.c ****   cmd[2] =  dir;                        // ·½Ïò
+ 610              		.loc 1 151 3 is_stmt 1 view .LVU185
+ 611              		.loc 1 151 10 is_stmt 0 view .LVU186
+ 612 0018 8DF80210 		strb	r1, [sp, #2]
+ 152:Core/BSP/Emm_V5.c ****   cmd[3] =  (uint8_t)(vel >> 8);        // ËÙ¶È(RPM)¸ß8Î»×Ö½Ú
+ 613              		.loc 1 152 3 is_stmt 1 view .LVU187
+ 614              		.loc 1 152 13 is_stmt 0 view .LVU188
+ 615 001c 110A     		lsrs	r1, r2, #8
+ 616              	.LVL66:
+ 617              		.loc 1 152 10 view .LVU189
+ 618 001e 8DF80310 		strb	r1, [sp, #3]
+ 153:Core/BSP/Emm_V5.c ****   cmd[4] =  (uint8_t)(vel >> 0);        // ËÙ¶È(RPM)µÍ8Î»×Ö½Ú
+ 619              		.loc 1 153 3 is_stmt 1 view .LVU190
+ 620              		.loc 1 153 10 is_stmt 0 view .LVU191
+ 621 0022 8DF80420 		strb	r2, [sp, #4]
+ 154:Core/BSP/Emm_V5.c ****   cmd[5] =  acc;                        // ¼ÓËÙ¶È£¬×¢Òâ£º0ÊÇÖ±½ÓÆô¶¯
+ 622              		.loc 1 154 3 is_stmt 1 view .LVU192
+ 623              		.loc 1 154 10 is_stmt 0 view .LVU193
+ 624 0026 8DF80530 		strb	r3, [sp, #5]
+ 155:Core/BSP/Emm_V5.c ****   cmd[6] =  snF;                        // ¶à»úÍ¬²½ÔË¶¯±êÖ¾
+ 625              		.loc 1 155 3 is_stmt 1 view .LVU194
+ 626              		.loc 1 155 10 is_stmt 0 view .LVU195
+ 627 002a 9DF81830 		ldrb	r3, [sp, #24]	@ zero_extendqisi2
+ 628              	.LVL67:
+ 629              		.loc 1 155 10 view .LVU196
+ 630 002e 8DF80630 		strb	r3, [sp, #6]
+ 156:Core/BSP/Emm_V5.c ****   cmd[7] =  0x6B;                       // Ð£Ñé×Ö½Ú
+ 631              		.loc 1 156 3 is_stmt 1 view .LVU197
+ 632              		.loc 1 156 10 is_stmt 0 view .LVU198
+ 633 0032 6B23     		movs	r3, #107
+ 634 0034 8DF80730 		strb	r3, [sp, #7]
+ 157:Core/BSP/Emm_V5.c ****   
+ 158:Core/BSP/Emm_V5.c ****   // ·¢ËÍÃüÁî
+ 159:Core/BSP/Emm_V5.c ****   usart_SendCmd(cmd, 8);
+ 635              		.loc 1 159 3 is_stmt 1 view .LVU199
+ 636 0038 0821     		movs	r1, #8
+ 637 003a 6846     		mov	r0, sp
+ 638 003c FFF7FEFF 		bl	usart_SendCmd
+ 639              	.LVL68:
+ 160:Core/BSP/Emm_V5.c **** }
+ 640              		.loc 1 160 1 is_stmt 0 view .LVU200
+ 641 0040 04B0     		add	sp, sp, #16
+ 642              	.LCFI17:
+ 643              		.cfi_def_cfa_offset 8
+ 644              		@ sp needed
+ 645 0042 10BD     		pop	{r4, pc}
+ 646              		.loc 1 160 1 view .LVU201
+ 647              		.cfi_endproc
+ 648              	.LFE5:
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 15
+
+
+ 650              		.section	.text.Emm_V5_Pos_Control,"ax",%progbits
+ 651              		.align	1
+ 652              		.global	Emm_V5_Pos_Control
+ 653              		.syntax unified
+ 654              		.thumb
+ 655              		.thumb_func
+ 657              	Emm_V5_Pos_Control:
+ 658              	.LVL69:
+ 659              	.LFB6:
+ 161:Core/BSP/Emm_V5.c **** 
+ 162:Core/BSP/Emm_V5.c **** /**
+ 163:Core/BSP/Emm_V5.c ****   * @brief    Î»ÖÃÄ£Ê½
+ 164:Core/BSP/Emm_V5.c ****   * @param    addr£ºµç»úµØÖ·
+ 165:Core/BSP/Emm_V5.c ****   * @param    dir £º·½Ïò        £¬0ÎªCW£¬ÆäÓàÖµÎªCCW
+ 166:Core/BSP/Emm_V5.c ****   * @param    vel £ºËÙ¶È(RPM)   £¬·¶Î§0 - 5000RPM
+ 167:Core/BSP/Emm_V5.c ****   * @param    acc £º¼ÓËÙ¶È      £¬·¶Î§0 - 255£¬×¢Òâ£º0ÊÇÖ±½ÓÆô¶¯
+ 168:Core/BSP/Emm_V5.c ****   * @param    clk £ºÂö³åÊý      £¬·¶Î§0- (2^32 - 1)¸ö
+ 169:Core/BSP/Emm_V5.c ****   * @param    raF £ºÏàÎ»/¾ø¶Ô±êÖ¾£¬falseÎªÏà¶ÔÔË¶¯£¬trueÎª¾ø¶ÔÖµÔË¶¯
+ 170:Core/BSP/Emm_V5.c ****   * @param    snF £º¶à»úÍ¬²½±êÖ¾ £¬falseÎª²»ÆôÓÃ£¬trueÎªÆôÓÃ
+ 171:Core/BSP/Emm_V5.c ****   * @retval   µØÖ· + ¹¦ÄÜÂë + ÃüÁî×´Ì¬ + Ð£Ñé×Ö½Ú
+ 172:Core/BSP/Emm_V5.c ****   */
+ 173:Core/BSP/Emm_V5.c **** void Emm_V5_Pos_Control(uint8_t addr, uint8_t dir, uint16_t vel, uint8_t acc, uint32_t clk, bool ra
+ 174:Core/BSP/Emm_V5.c **** {
+ 660              		.loc 1 174 1 is_stmt 1 view -0
+ 661              		.cfi_startproc
+ 662              		@ args = 12, pretend = 0, frame = 16
+ 663              		@ frame_needed = 0, uses_anonymous_args = 0
+ 664              		.loc 1 174 1 is_stmt 0 view .LVU203
+ 665 0000 30B5     		push	{r4, r5, lr}
+ 666              	.LCFI18:
+ 667              		.cfi_def_cfa_offset 12
+ 668              		.cfi_offset 4, -12
+ 669              		.cfi_offset 5, -8
+ 670              		.cfi_offset 14, -4
+ 671 0002 85B0     		sub	sp, sp, #20
+ 672              	.LCFI19:
+ 673              		.cfi_def_cfa_offset 32
+ 674 0004 089C     		ldr	r4, [sp, #32]
+ 175:Core/BSP/Emm_V5.c ****   uint8_t cmd[16] = {0};
+ 675              		.loc 1 175 3 is_stmt 1 view .LVU204
+ 676              		.loc 1 175 11 is_stmt 0 view .LVU205
+ 677 0006 0025     		movs	r5, #0
+ 678 0008 0095     		str	r5, [sp]
+ 679 000a 0195     		str	r5, [sp, #4]
+ 680 000c 0295     		str	r5, [sp, #8]
+ 681 000e 0395     		str	r5, [sp, #12]
+ 176:Core/BSP/Emm_V5.c **** 
+ 177:Core/BSP/Emm_V5.c ****   // ×°ÔØÃüÁî
+ 178:Core/BSP/Emm_V5.c ****   cmd[0]  =  addr;                      // µØÖ·
+ 682              		.loc 1 178 3 is_stmt 1 view .LVU206
+ 683              		.loc 1 178 11 is_stmt 0 view .LVU207
+ 684 0010 8DF80000 		strb	r0, [sp]
+ 179:Core/BSP/Emm_V5.c ****   cmd[1]  =  0xFD;                      // ¹¦ÄÜÂë
+ 685              		.loc 1 179 3 is_stmt 1 view .LVU208
+ 686              		.loc 1 179 11 is_stmt 0 view .LVU209
+ 687 0014 FD20     		movs	r0, #253
+ 688              	.LVL70:
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 16
+
+
+ 689              		.loc 1 179 11 view .LVU210
+ 690 0016 8DF80100 		strb	r0, [sp, #1]
+ 180:Core/BSP/Emm_V5.c ****   cmd[2]  =  dir;                       // ·½Ïò
+ 691              		.loc 1 180 3 is_stmt 1 view .LVU211
+ 692              		.loc 1 180 11 is_stmt 0 view .LVU212
+ 693 001a 8DF80210 		strb	r1, [sp, #2]
+ 181:Core/BSP/Emm_V5.c ****   cmd[3]  =  (uint8_t)(vel >> 8);       // ËÙ¶È(RPM)¸ß8Î»×Ö½Ú
+ 694              		.loc 1 181 3 is_stmt 1 view .LVU213
+ 695              		.loc 1 181 14 is_stmt 0 view .LVU214
+ 696 001e 110A     		lsrs	r1, r2, #8
+ 697              	.LVL71:
+ 698              		.loc 1 181 11 view .LVU215
+ 699 0020 8DF80310 		strb	r1, [sp, #3]
+ 182:Core/BSP/Emm_V5.c ****   cmd[4]  =  (uint8_t)(vel >> 0);       // ËÙ¶È(RPM)µÍ8Î»×Ö½Ú 
+ 700              		.loc 1 182 3 is_stmt 1 view .LVU216
+ 701              		.loc 1 182 11 is_stmt 0 view .LVU217
+ 702 0024 8DF80420 		strb	r2, [sp, #4]
+ 183:Core/BSP/Emm_V5.c ****   cmd[5]  =  acc;                       // ¼ÓËÙ¶È£¬×¢Òâ£º0ÊÇÖ±½ÓÆô¶¯
+ 703              		.loc 1 183 3 is_stmt 1 view .LVU218
+ 704              		.loc 1 183 11 is_stmt 0 view .LVU219
+ 705 0028 8DF80530 		strb	r3, [sp, #5]
+ 184:Core/BSP/Emm_V5.c ****   cmd[6]  =  (uint8_t)(clk >> 24);      // Âö³åÊý(bit24 - bit31)
+ 706              		.loc 1 184 3 is_stmt 1 view .LVU220
+ 707              		.loc 1 184 14 is_stmt 0 view .LVU221
+ 708 002c 230E     		lsrs	r3, r4, #24
+ 709              	.LVL72:
+ 710              		.loc 1 184 11 view .LVU222
+ 711 002e 8DF80630 		strb	r3, [sp, #6]
+ 185:Core/BSP/Emm_V5.c ****   cmd[7]  =  (uint8_t)(clk >> 16);      // Âö³åÊý(bit16 - bit23)
+ 712              		.loc 1 185 3 is_stmt 1 view .LVU223
+ 713              		.loc 1 185 14 is_stmt 0 view .LVU224
+ 714 0032 C4F30743 		ubfx	r3, r4, #16, #8
+ 715              		.loc 1 185 11 view .LVU225
+ 716 0036 8DF80730 		strb	r3, [sp, #7]
+ 186:Core/BSP/Emm_V5.c ****   cmd[8]  =  (uint8_t)(clk >> 8);       // Âö³åÊý(bit8  - bit15)
+ 717              		.loc 1 186 3 is_stmt 1 view .LVU226
+ 718              		.loc 1 186 14 is_stmt 0 view .LVU227
+ 719 003a C4F30723 		ubfx	r3, r4, #8, #8
+ 720              		.loc 1 186 11 view .LVU228
+ 721 003e 8DF80830 		strb	r3, [sp, #8]
+ 187:Core/BSP/Emm_V5.c ****   cmd[9]  =  (uint8_t)(clk >> 0);       // Âö³åÊý(bit0  - bit7 )
+ 722              		.loc 1 187 3 is_stmt 1 view .LVU229
+ 723              		.loc 1 187 11 is_stmt 0 view .LVU230
+ 724 0042 8DF80940 		strb	r4, [sp, #9]
+ 188:Core/BSP/Emm_V5.c ****   cmd[10] =  raF;                       // ÏàÎ»/¾ø¶Ô±êÖ¾£¬falseÎªÏà¶ÔÔË¶¯£¬trueÎª¾ø¶ÔÖµÔË¶¯
+ 725              		.loc 1 188 3 is_stmt 1 view .LVU231
+ 726              		.loc 1 188 11 is_stmt 0 view .LVU232
+ 727 0046 9DF82430 		ldrb	r3, [sp, #36]	@ zero_extendqisi2
+ 728 004a 8DF80A30 		strb	r3, [sp, #10]
+ 189:Core/BSP/Emm_V5.c ****   cmd[11] =  snF;                       // ¶à»úÍ¬²½ÔË¶¯±êÖ¾£¬falseÎª²»ÆôÓÃ£¬trueÎªÆôÓÃ
+ 729              		.loc 1 189 3 is_stmt 1 view .LVU233
+ 730              		.loc 1 189 11 is_stmt 0 view .LVU234
+ 731 004e 9DF82830 		ldrb	r3, [sp, #40]	@ zero_extendqisi2
+ 732 0052 8DF80B30 		strb	r3, [sp, #11]
+ 190:Core/BSP/Emm_V5.c ****   cmd[12] =  0x6B;                      // Ð£Ñé×Ö½Ú
+ 733              		.loc 1 190 3 is_stmt 1 view .LVU235
+ 734              		.loc 1 190 11 is_stmt 0 view .LVU236
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 17
+
+
+ 735 0056 6B23     		movs	r3, #107
+ 736 0058 8DF80C30 		strb	r3, [sp, #12]
+ 191:Core/BSP/Emm_V5.c ****   
+ 192:Core/BSP/Emm_V5.c ****   // ·¢ËÍÃüÁî
+ 193:Core/BSP/Emm_V5.c ****   usart_SendCmd(cmd, 13);
+ 737              		.loc 1 193 3 is_stmt 1 view .LVU237
+ 738 005c 0D21     		movs	r1, #13
+ 739 005e 6846     		mov	r0, sp
+ 740 0060 FFF7FEFF 		bl	usart_SendCmd
+ 741              	.LVL73:
+ 194:Core/BSP/Emm_V5.c **** }
+ 742              		.loc 1 194 1 is_stmt 0 view .LVU238
+ 743 0064 05B0     		add	sp, sp, #20
+ 744              	.LCFI20:
+ 745              		.cfi_def_cfa_offset 12
+ 746              		@ sp needed
+ 747 0066 30BD     		pop	{r4, r5, pc}
+ 748              		.loc 1 194 1 view .LVU239
+ 749              		.cfi_endproc
+ 750              	.LFE6:
+ 752              		.section	.text.Emm_V5_Stop_Now,"ax",%progbits
+ 753              		.align	1
+ 754              		.global	Emm_V5_Stop_Now
+ 755              		.syntax unified
+ 756              		.thumb
+ 757              		.thumb_func
+ 759              	Emm_V5_Stop_Now:
+ 760              	.LVL74:
+ 761              	.LFB7:
+ 195:Core/BSP/Emm_V5.c **** 
+ 196:Core/BSP/Emm_V5.c **** /**
+ 197:Core/BSP/Emm_V5.c ****   * @brief    Á¢¼´Í£Ö¹£¨ËùÓÐ¿ØÖÆÄ£Ê½¶¼Í¨ÓÃ£©
+ 198:Core/BSP/Emm_V5.c ****   * @param    addr  £ºµç»úµØÖ·
+ 199:Core/BSP/Emm_V5.c ****   * @param    snF   £º¶à»úÍ¬²½±êÖ¾£¬falseÎª²»ÆôÓÃ£¬trueÎªÆôÓÃ
+ 200:Core/BSP/Emm_V5.c ****   * @retval   µØÖ· + ¹¦ÄÜÂë + ÃüÁî×´Ì¬ + Ð£Ñé×Ö½Ú
+ 201:Core/BSP/Emm_V5.c ****   */
+ 202:Core/BSP/Emm_V5.c **** void Emm_V5_Stop_Now(uint8_t addr, bool snF)
+ 203:Core/BSP/Emm_V5.c **** {
+ 762              		.loc 1 203 1 is_stmt 1 view -0
+ 763              		.cfi_startproc
+ 764              		@ args = 0, pretend = 0, frame = 16
+ 765              		@ frame_needed = 0, uses_anonymous_args = 0
+ 766              		.loc 1 203 1 is_stmt 0 view .LVU241
+ 767 0000 00B5     		push	{lr}
+ 768              	.LCFI21:
+ 769              		.cfi_def_cfa_offset 4
+ 770              		.cfi_offset 14, -4
+ 771 0002 85B0     		sub	sp, sp, #20
+ 772              	.LCFI22:
+ 773              		.cfi_def_cfa_offset 24
+ 204:Core/BSP/Emm_V5.c ****   uint8_t cmd[16] = {0};
+ 774              		.loc 1 204 3 is_stmt 1 view .LVU242
+ 775              		.loc 1 204 11 is_stmt 0 view .LVU243
+ 776 0004 0023     		movs	r3, #0
+ 777 0006 0093     		str	r3, [sp]
+ 778 0008 0193     		str	r3, [sp, #4]
+ 779 000a 0293     		str	r3, [sp, #8]
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 18
+
+
+ 780 000c 0393     		str	r3, [sp, #12]
+ 205:Core/BSP/Emm_V5.c ****   
+ 206:Core/BSP/Emm_V5.c ****   // ×°ÔØÃüÁî
+ 207:Core/BSP/Emm_V5.c ****   cmd[0] =  addr;                       // µØÖ·
+ 781              		.loc 1 207 3 is_stmt 1 view .LVU244
+ 782              		.loc 1 207 10 is_stmt 0 view .LVU245
+ 783 000e 8DF80000 		strb	r0, [sp]
+ 208:Core/BSP/Emm_V5.c ****   cmd[1] =  0xFE;                       // ¹¦ÄÜÂë
+ 784              		.loc 1 208 3 is_stmt 1 view .LVU246
+ 785              		.loc 1 208 10 is_stmt 0 view .LVU247
+ 786 0012 FE23     		movs	r3, #254
+ 787 0014 8DF80130 		strb	r3, [sp, #1]
+ 209:Core/BSP/Emm_V5.c ****   cmd[2] =  0x98;                       // ¸¨ÖúÂë
+ 788              		.loc 1 209 3 is_stmt 1 view .LVU248
+ 789              		.loc 1 209 10 is_stmt 0 view .LVU249
+ 790 0018 9823     		movs	r3, #152
+ 791 001a 8DF80230 		strb	r3, [sp, #2]
+ 210:Core/BSP/Emm_V5.c ****   cmd[3] =  snF;                        // ¶à»úÍ¬²½ÔË¶¯±êÖ¾
+ 792              		.loc 1 210 3 is_stmt 1 view .LVU250
+ 793              		.loc 1 210 10 is_stmt 0 view .LVU251
+ 794 001e 8DF80310 		strb	r1, [sp, #3]
+ 211:Core/BSP/Emm_V5.c ****   cmd[4] =  0x6B;                       // Ð£Ñé×Ö½Ú
+ 795              		.loc 1 211 3 is_stmt 1 view .LVU252
+ 796              		.loc 1 211 10 is_stmt 0 view .LVU253
+ 797 0022 6B23     		movs	r3, #107
+ 798 0024 8DF80430 		strb	r3, [sp, #4]
+ 212:Core/BSP/Emm_V5.c ****   
+ 213:Core/BSP/Emm_V5.c ****   // ·¢ËÍÃüÁî
+ 214:Core/BSP/Emm_V5.c ****   usart_SendCmd(cmd, 5);
+ 799              		.loc 1 214 3 is_stmt 1 view .LVU254
+ 800 0028 0521     		movs	r1, #5
+ 801              	.LVL75:
+ 802              		.loc 1 214 3 is_stmt 0 view .LVU255
+ 803 002a 6846     		mov	r0, sp
+ 804              	.LVL76:
+ 805              		.loc 1 214 3 view .LVU256
+ 806 002c FFF7FEFF 		bl	usart_SendCmd
+ 807              	.LVL77:
+ 215:Core/BSP/Emm_V5.c **** }
+ 808              		.loc 1 215 1 view .LVU257
+ 809 0030 05B0     		add	sp, sp, #20
+ 810              	.LCFI23:
+ 811              		.cfi_def_cfa_offset 4
+ 812              		@ sp needed
+ 813 0032 5DF804FB 		ldr	pc, [sp], #4
+ 814              		.cfi_endproc
+ 815              	.LFE7:
+ 817              		.section	.text.Emm_V5_Synchronous_motion,"ax",%progbits
+ 818              		.align	1
+ 819              		.global	Emm_V5_Synchronous_motion
+ 820              		.syntax unified
+ 821              		.thumb
+ 822              		.thumb_func
+ 824              	Emm_V5_Synchronous_motion:
+ 825              	.LVL78:
+ 826              	.LFB8:
+ 216:Core/BSP/Emm_V5.c **** 
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 19
+
+
+ 217:Core/BSP/Emm_V5.c **** /**
+ 218:Core/BSP/Emm_V5.c ****   * @brief    ¶à»úÍ¬²½ÔË¶¯
+ 219:Core/BSP/Emm_V5.c ****   * @param    addr  £ºµç»úµØÖ·
+ 220:Core/BSP/Emm_V5.c ****   * @retval   µØÖ· + ¹¦ÄÜÂë + ÃüÁî×´Ì¬ + Ð£Ñé×Ö½Ú
+ 221:Core/BSP/Emm_V5.c ****   */
+ 222:Core/BSP/Emm_V5.c **** void Emm_V5_Synchronous_motion(uint8_t addr)
+ 223:Core/BSP/Emm_V5.c **** {
+ 827              		.loc 1 223 1 is_stmt 1 view -0
+ 828              		.cfi_startproc
+ 829              		@ args = 0, pretend = 0, frame = 16
+ 830              		@ frame_needed = 0, uses_anonymous_args = 0
+ 831              		.loc 1 223 1 is_stmt 0 view .LVU259
+ 832 0000 00B5     		push	{lr}
+ 833              	.LCFI24:
+ 834              		.cfi_def_cfa_offset 4
+ 835              		.cfi_offset 14, -4
+ 836 0002 85B0     		sub	sp, sp, #20
+ 837              	.LCFI25:
+ 838              		.cfi_def_cfa_offset 24
+ 224:Core/BSP/Emm_V5.c ****   uint8_t cmd[16] = {0};
+ 839              		.loc 1 224 3 is_stmt 1 view .LVU260
+ 840              		.loc 1 224 11 is_stmt 0 view .LVU261
+ 841 0004 0023     		movs	r3, #0
+ 842 0006 0093     		str	r3, [sp]
+ 843 0008 0193     		str	r3, [sp, #4]
+ 844 000a 0293     		str	r3, [sp, #8]
+ 845 000c 0393     		str	r3, [sp, #12]
+ 225:Core/BSP/Emm_V5.c ****   
+ 226:Core/BSP/Emm_V5.c ****   // ×°ÔØÃüÁî
+ 227:Core/BSP/Emm_V5.c ****   cmd[0] =  addr;                       // µØÖ·
+ 846              		.loc 1 227 3 is_stmt 1 view .LVU262
+ 847              		.loc 1 227 10 is_stmt 0 view .LVU263
+ 848 000e 8DF80000 		strb	r0, [sp]
+ 228:Core/BSP/Emm_V5.c ****   cmd[1] =  0xFF;                       // ¹¦ÄÜÂë
+ 849              		.loc 1 228 3 is_stmt 1 view .LVU264
+ 850              		.loc 1 228 10 is_stmt 0 view .LVU265
+ 851 0012 FF23     		movs	r3, #255
+ 852 0014 8DF80130 		strb	r3, [sp, #1]
+ 229:Core/BSP/Emm_V5.c ****   cmd[2] =  0x66;                       // ¸¨ÖúÂë
+ 853              		.loc 1 229 3 is_stmt 1 view .LVU266
+ 854              		.loc 1 229 10 is_stmt 0 view .LVU267
+ 855 0018 6623     		movs	r3, #102
+ 856 001a 8DF80230 		strb	r3, [sp, #2]
+ 230:Core/BSP/Emm_V5.c ****   cmd[3] =  0x6B;                       // Ð£Ñé×Ö½Ú
+ 857              		.loc 1 230 3 is_stmt 1 view .LVU268
+ 858              		.loc 1 230 10 is_stmt 0 view .LVU269
+ 859 001e 6B23     		movs	r3, #107
+ 860 0020 8DF80330 		strb	r3, [sp, #3]
+ 231:Core/BSP/Emm_V5.c ****   
+ 232:Core/BSP/Emm_V5.c ****   // ·¢ËÍÃüÁî
+ 233:Core/BSP/Emm_V5.c ****   usart_SendCmd(cmd, 4);
+ 861              		.loc 1 233 3 is_stmt 1 view .LVU270
+ 862 0024 0421     		movs	r1, #4
+ 863 0026 6846     		mov	r0, sp
+ 864              	.LVL79:
+ 865              		.loc 1 233 3 is_stmt 0 view .LVU271
+ 866 0028 FFF7FEFF 		bl	usart_SendCmd
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 20
+
+
+ 867              	.LVL80:
+ 234:Core/BSP/Emm_V5.c **** }
+ 868              		.loc 1 234 1 view .LVU272
+ 869 002c 05B0     		add	sp, sp, #20
+ 870              	.LCFI26:
+ 871              		.cfi_def_cfa_offset 4
+ 872              		@ sp needed
+ 873 002e 5DF804FB 		ldr	pc, [sp], #4
+ 874              		.cfi_endproc
+ 875              	.LFE8:
+ 877              		.section	.text.Emm_V5_Origin_Set_O,"ax",%progbits
+ 878              		.align	1
+ 879              		.global	Emm_V5_Origin_Set_O
+ 880              		.syntax unified
+ 881              		.thumb
+ 882              		.thumb_func
+ 884              	Emm_V5_Origin_Set_O:
+ 885              	.LVL81:
+ 886              	.LFB9:
+ 235:Core/BSP/Emm_V5.c **** 
+ 236:Core/BSP/Emm_V5.c **** /**
+ 237:Core/BSP/Emm_V5.c ****   * @brief    ÉèÖÃµ¥È¦»ØÁãµÄÁãµãÎ»ÖÃ
+ 238:Core/BSP/Emm_V5.c ****   * @param    addr  £ºµç»úµØÖ·
+ 239:Core/BSP/Emm_V5.c ****   * @param    svF   £ºÊÇ·ñ´æ´¢±êÖ¾£¬falseÎª²»´æ´¢£¬trueÎª´æ´¢
+ 240:Core/BSP/Emm_V5.c ****   * @retval   µØÖ· + ¹¦ÄÜÂë + ÃüÁî×´Ì¬ + Ð£Ñé×Ö½Ú
+ 241:Core/BSP/Emm_V5.c ****   */
+ 242:Core/BSP/Emm_V5.c **** void Emm_V5_Origin_Set_O(uint8_t addr, bool svF)
+ 243:Core/BSP/Emm_V5.c **** {
+ 887              		.loc 1 243 1 is_stmt 1 view -0
+ 888              		.cfi_startproc
+ 889              		@ args = 0, pretend = 0, frame = 16
+ 890              		@ frame_needed = 0, uses_anonymous_args = 0
+ 891              		.loc 1 243 1 is_stmt 0 view .LVU274
+ 892 0000 00B5     		push	{lr}
+ 893              	.LCFI27:
+ 894              		.cfi_def_cfa_offset 4
+ 895              		.cfi_offset 14, -4
+ 896 0002 85B0     		sub	sp, sp, #20
+ 897              	.LCFI28:
+ 898              		.cfi_def_cfa_offset 24
+ 244:Core/BSP/Emm_V5.c ****   uint8_t cmd[16] = {0};
+ 899              		.loc 1 244 3 is_stmt 1 view .LVU275
+ 900              		.loc 1 244 11 is_stmt 0 view .LVU276
+ 901 0004 0023     		movs	r3, #0
+ 902 0006 0093     		str	r3, [sp]
+ 903 0008 0193     		str	r3, [sp, #4]
+ 904 000a 0293     		str	r3, [sp, #8]
+ 905 000c 0393     		str	r3, [sp, #12]
+ 245:Core/BSP/Emm_V5.c ****   
+ 246:Core/BSP/Emm_V5.c ****   // ×°ÔØÃüÁî
+ 247:Core/BSP/Emm_V5.c ****   cmd[0] =  addr;                       // µØÖ·
+ 906              		.loc 1 247 3 is_stmt 1 view .LVU277
+ 907              		.loc 1 247 10 is_stmt 0 view .LVU278
+ 908 000e 8DF80000 		strb	r0, [sp]
+ 248:Core/BSP/Emm_V5.c ****   cmd[1] =  0x93;                       // ¹¦ÄÜÂë
+ 909              		.loc 1 248 3 is_stmt 1 view .LVU279
+ 910              		.loc 1 248 10 is_stmt 0 view .LVU280
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 21
+
+
+ 911 0012 9323     		movs	r3, #147
+ 912 0014 8DF80130 		strb	r3, [sp, #1]
+ 249:Core/BSP/Emm_V5.c ****   cmd[2] =  0x88;                       // ¸¨ÖúÂë
+ 913              		.loc 1 249 3 is_stmt 1 view .LVU281
+ 914              		.loc 1 249 10 is_stmt 0 view .LVU282
+ 915 0018 8823     		movs	r3, #136
+ 916 001a 8DF80230 		strb	r3, [sp, #2]
+ 250:Core/BSP/Emm_V5.c ****   cmd[3] =  svF;                        // ÊÇ·ñ´æ´¢±êÖ¾£¬falseÎª²»´æ´¢£¬trueÎª´æ´¢
+ 917              		.loc 1 250 3 is_stmt 1 view .LVU283
+ 918              		.loc 1 250 10 is_stmt 0 view .LVU284
+ 919 001e 8DF80310 		strb	r1, [sp, #3]
+ 251:Core/BSP/Emm_V5.c ****   cmd[4] =  0x6B;                       // Ð£Ñé×Ö½Ú
+ 920              		.loc 1 251 3 is_stmt 1 view .LVU285
+ 921              		.loc 1 251 10 is_stmt 0 view .LVU286
+ 922 0022 6B23     		movs	r3, #107
+ 923 0024 8DF80430 		strb	r3, [sp, #4]
+ 252:Core/BSP/Emm_V5.c ****   
+ 253:Core/BSP/Emm_V5.c ****   // ·¢ËÍÃüÁî
+ 254:Core/BSP/Emm_V5.c ****   usart_SendCmd(cmd, 5);
+ 924              		.loc 1 254 3 is_stmt 1 view .LVU287
+ 925 0028 0521     		movs	r1, #5
+ 926              	.LVL82:
+ 927              		.loc 1 254 3 is_stmt 0 view .LVU288
+ 928 002a 6846     		mov	r0, sp
+ 929              	.LVL83:
+ 930              		.loc 1 254 3 view .LVU289
+ 931 002c FFF7FEFF 		bl	usart_SendCmd
+ 932              	.LVL84:
+ 255:Core/BSP/Emm_V5.c **** }
+ 933              		.loc 1 255 1 view .LVU290
+ 934 0030 05B0     		add	sp, sp, #20
+ 935              	.LCFI29:
+ 936              		.cfi_def_cfa_offset 4
+ 937              		@ sp needed
+ 938 0032 5DF804FB 		ldr	pc, [sp], #4
+ 939              		.cfi_endproc
+ 940              	.LFE9:
+ 942              		.section	.text.Emm_V5_Origin_Modify_Params,"ax",%progbits
+ 943              		.align	1
+ 944              		.global	Emm_V5_Origin_Modify_Params
+ 945              		.syntax unified
+ 946              		.thumb
+ 947              		.thumb_func
+ 949              	Emm_V5_Origin_Modify_Params:
+ 950              	.LVL85:
+ 951              	.LFB10:
+ 256:Core/BSP/Emm_V5.c **** 
+ 257:Core/BSP/Emm_V5.c **** /**
+ 258:Core/BSP/Emm_V5.c ****   * @brief    ÐÞ¸Ä»ØÁã²ÎÊý
+ 259:Core/BSP/Emm_V5.c ****   * @param    addr  £ºµç»úµØÖ·
+ 260:Core/BSP/Emm_V5.c ****   * @param    svF   £ºÊÇ·ñ´æ´¢±êÖ¾£¬falseÎª²»´æ´¢£¬trueÎª´æ´¢
+ 261:Core/BSP/Emm_V5.c ****   * @param    o_mode £º»ØÁãÄ£Ê½£¬0Îªµ¥È¦¾Í½ü»ØÁã£¬1Îªµ¥È¦·½Ïò»ØÁã£¬2Îª¶àÈ¦ÎÞÏÞÎ»Åö×²»ØÁã£¬3Îª¶àÈ¦ÓÐ
+ 262:Core/BSP/Emm_V5.c ****   * @param    o_dir  £º»ØÁã·½Ïò£¬0ÎªCW£¬ÆäÓàÖµÎªCCW
+ 263:Core/BSP/Emm_V5.c ****   * @param    o_vel  £º»ØÁãËÙ¶È£¬µ¥Î»£ºRPM£¨×ª/·ÖÖÓ£©
+ 264:Core/BSP/Emm_V5.c ****   * @param    o_tm   £º»ØÁã³¬Ê±Ê±¼ä£¬µ¥Î»£ººÁÃë
+ 265:Core/BSP/Emm_V5.c ****   * @param    sl_vel £ºÎÞÏÞÎ»Åö×²»ØÁã¼ì²â×ªËÙ£¬µ¥Î»£ºRPM£¨×ª/·ÖÖÓ£©
+ 266:Core/BSP/Emm_V5.c ****   * @param    sl_ma  £ºÎÞÏÞÎ»Åö×²»ØÁã¼ì²âµçÁ÷£¬µ¥Î»£ºMa£¨ºÁ°²£©
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 22
+
+
+ 267:Core/BSP/Emm_V5.c ****   * @param    sl_ms  £ºÎÞÏÞÎ»Åö×²»ØÁã¼ì²âÊ±¼ä£¬µ¥Î»£ºMs£¨ºÁÃë£©
+ 268:Core/BSP/Emm_V5.c ****   * @param    potF   £ºÉÏµç×Ô¶¯´¥·¢»ØÁã£¬falseÎª²»Ê¹ÄÜ£¬trueÎªÊ¹ÄÜ
+ 269:Core/BSP/Emm_V5.c ****   * @retval   µØÖ· + ¹¦ÄÜÂë + ÃüÁî×´Ì¬ + Ð£Ñé×Ö½Ú
+ 270:Core/BSP/Emm_V5.c ****   */
+ 271:Core/BSP/Emm_V5.c **** void Emm_V5_Origin_Modify_Params(uint8_t addr, bool svF, uint8_t o_mode, uint8_t o_dir, uint16_t o_
+ 272:Core/BSP/Emm_V5.c **** {
+ 952              		.loc 1 272 1 is_stmt 1 view -0
+ 953              		.cfi_startproc
+ 954              		@ args = 24, pretend = 0, frame = 32
+ 955              		@ frame_needed = 0, uses_anonymous_args = 0
+ 956              		.loc 1 272 1 is_stmt 0 view .LVU292
+ 957 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 958              	.LCFI30:
+ 959              		.cfi_def_cfa_offset 20
+ 960              		.cfi_offset 4, -20
+ 961              		.cfi_offset 5, -16
+ 962              		.cfi_offset 6, -12
+ 963              		.cfi_offset 7, -8
+ 964              		.cfi_offset 14, -4
+ 965 0002 89B0     		sub	sp, sp, #36
+ 966              	.LCFI31:
+ 967              		.cfi_def_cfa_offset 56
+ 968 0004 BDF83870 		ldrh	r7, [sp, #56]
+ 969 0008 0F9D     		ldr	r5, [sp, #60]
+ 970 000a BDF84060 		ldrh	r6, [sp, #64]
+ 971 000e BDF844E0 		ldrh	lr, [sp, #68]
+ 972 0012 BDF848C0 		ldrh	ip, [sp, #72]
+ 273:Core/BSP/Emm_V5.c ****   uint8_t cmd[32] = {0};
+ 973              		.loc 1 273 3 is_stmt 1 view .LVU293
+ 974              		.loc 1 273 11 is_stmt 0 view .LVU294
+ 975 0016 0024     		movs	r4, #0
+ 976 0018 0094     		str	r4, [sp]
+ 977 001a 0194     		str	r4, [sp, #4]
+ 978 001c 0294     		str	r4, [sp, #8]
+ 979 001e 0394     		str	r4, [sp, #12]
+ 980 0020 0494     		str	r4, [sp, #16]
+ 981 0022 0594     		str	r4, [sp, #20]
+ 982 0024 0694     		str	r4, [sp, #24]
+ 983 0026 0794     		str	r4, [sp, #28]
+ 274:Core/BSP/Emm_V5.c ****   
+ 275:Core/BSP/Emm_V5.c ****   // ×°ÔØÃüÁî
+ 276:Core/BSP/Emm_V5.c ****   cmd[0] =  addr;                       // µØÖ·
+ 984              		.loc 1 276 3 is_stmt 1 view .LVU295
+ 985              		.loc 1 276 10 is_stmt 0 view .LVU296
+ 986 0028 8DF80000 		strb	r0, [sp]
+ 277:Core/BSP/Emm_V5.c ****   cmd[1] =  0x4C;                       // ¹¦ÄÜÂë
+ 987              		.loc 1 277 3 is_stmt 1 view .LVU297
+ 988              		.loc 1 277 10 is_stmt 0 view .LVU298
+ 989 002c 4C20     		movs	r0, #76
+ 990              	.LVL86:
+ 991              		.loc 1 277 10 view .LVU299
+ 992 002e 8DF80100 		strb	r0, [sp, #1]
+ 278:Core/BSP/Emm_V5.c ****   cmd[2] =  0xAE;                       // ¸¨ÖúÂë
+ 993              		.loc 1 278 3 is_stmt 1 view .LVU300
+ 994              		.loc 1 278 10 is_stmt 0 view .LVU301
+ 995 0032 AE20     		movs	r0, #174
+ 996 0034 8DF80200 		strb	r0, [sp, #2]
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 23
+
+
+ 279:Core/BSP/Emm_V5.c ****   cmd[3] =  svF;                        // ÊÇ·ñ´æ´¢±êÖ¾£¬falseÎª²»´æ´¢£¬trueÎª´æ´¢
+ 997              		.loc 1 279 3 is_stmt 1 view .LVU302
+ 998              		.loc 1 279 10 is_stmt 0 view .LVU303
+ 999 0038 8DF80310 		strb	r1, [sp, #3]
+ 280:Core/BSP/Emm_V5.c ****   cmd[4] =  o_mode;                     // »ØÁãÄ£Ê½£¬0Îªµ¥È¦¾Í½ü»ØÁã£¬1Îªµ¥È¦·½Ïò»ØÁã£¬2Îª¶àÈ¦ÎÞÏÞÎ
+ 1000              		.loc 1 280 3 is_stmt 1 view .LVU304
+ 1001              		.loc 1 280 10 is_stmt 0 view .LVU305
+ 1002 003c 8DF80420 		strb	r2, [sp, #4]
+ 281:Core/BSP/Emm_V5.c ****   cmd[5] =  o_dir;                      // »ØÁã·½Ïò
+ 1003              		.loc 1 281 3 is_stmt 1 view .LVU306
+ 1004              		.loc 1 281 10 is_stmt 0 view .LVU307
+ 1005 0040 8DF80530 		strb	r3, [sp, #5]
+ 282:Core/BSP/Emm_V5.c ****   cmd[6]  =  (uint8_t)(o_vel >> 8);     // »ØÁãËÙ¶È(RPM)¸ß8Î»×Ö½Ú
+ 1006              		.loc 1 282 3 is_stmt 1 view .LVU308
+ 1007              		.loc 1 282 14 is_stmt 0 view .LVU309
+ 1008 0044 3B0A     		lsrs	r3, r7, #8
+ 1009              	.LVL87:
+ 1010              		.loc 1 282 11 view .LVU310
+ 1011 0046 8DF80630 		strb	r3, [sp, #6]
+ 283:Core/BSP/Emm_V5.c ****   cmd[7]  =  (uint8_t)(o_vel >> 0);     // »ØÁãËÙ¶È(RPM)µÍ8Î»×Ö½Ú 
+ 1012              		.loc 1 283 3 is_stmt 1 view .LVU311
+ 1013              		.loc 1 283 11 is_stmt 0 view .LVU312
+ 1014 004a 8DF80770 		strb	r7, [sp, #7]
+ 284:Core/BSP/Emm_V5.c ****   cmd[8]  =  (uint8_t)(o_tm >> 24);     // »ØÁã³¬Ê±Ê±¼ä(bit24 - bit31)
+ 1015              		.loc 1 284 3 is_stmt 1 view .LVU313
+ 1016              		.loc 1 284 14 is_stmt 0 view .LVU314
+ 1017 004e 2B0E     		lsrs	r3, r5, #24
+ 1018              		.loc 1 284 11 view .LVU315
+ 1019 0050 8DF80830 		strb	r3, [sp, #8]
+ 285:Core/BSP/Emm_V5.c ****   cmd[9]  =  (uint8_t)(o_tm >> 16);     // »ØÁã³¬Ê±Ê±¼ä(bit16 - bit23)
+ 1020              		.loc 1 285 3 is_stmt 1 view .LVU316
+ 1021              		.loc 1 285 14 is_stmt 0 view .LVU317
+ 1022 0054 C5F30743 		ubfx	r3, r5, #16, #8
+ 1023              		.loc 1 285 11 view .LVU318
+ 1024 0058 8DF80930 		strb	r3, [sp, #9]
+ 286:Core/BSP/Emm_V5.c ****   cmd[10] =  (uint8_t)(o_tm >> 8);      // »ØÁã³¬Ê±Ê±¼ä(bit8  - bit15)
+ 1025              		.loc 1 286 3 is_stmt 1 view .LVU319
+ 1026              		.loc 1 286 14 is_stmt 0 view .LVU320
+ 1027 005c C5F30723 		ubfx	r3, r5, #8, #8
+ 1028              		.loc 1 286 11 view .LVU321
+ 1029 0060 8DF80A30 		strb	r3, [sp, #10]
+ 287:Core/BSP/Emm_V5.c ****   cmd[11] =  (uint8_t)(o_tm >> 0);      // »ØÁã³¬Ê±Ê±¼ä(bit0  - bit7 )
+ 1030              		.loc 1 287 3 is_stmt 1 view .LVU322
+ 1031              		.loc 1 287 11 is_stmt 0 view .LVU323
+ 1032 0064 8DF80B50 		strb	r5, [sp, #11]
+ 288:Core/BSP/Emm_V5.c ****   cmd[12] =  (uint8_t)(sl_vel >> 8);    // ÎÞÏÞÎ»Åö×²»ØÁã¼ì²â×ªËÙ(RPM)¸ß8Î»×Ö½Ú
+ 1033              		.loc 1 288 3 is_stmt 1 view .LVU324
+ 1034              		.loc 1 288 14 is_stmt 0 view .LVU325
+ 1035 0068 330A     		lsrs	r3, r6, #8
+ 1036              		.loc 1 288 11 view .LVU326
+ 1037 006a 8DF80C30 		strb	r3, [sp, #12]
+ 289:Core/BSP/Emm_V5.c ****   cmd[13] =  (uint8_t)(sl_vel >> 0);    // ÎÞÏÞÎ»Åö×²»ØÁã¼ì²â×ªËÙ(RPM)µÍ8Î»×Ö½Ú 
+ 1038              		.loc 1 289 3 is_stmt 1 view .LVU327
+ 1039              		.loc 1 289 11 is_stmt 0 view .LVU328
+ 1040 006e 8DF80D60 		strb	r6, [sp, #13]
+ 290:Core/BSP/Emm_V5.c ****   cmd[14] =  (uint8_t)(sl_ma >> 8);     // ÎÞÏÞÎ»Åö×²»ØÁã¼ì²âµçÁ÷(Ma)¸ß8Î»×Ö½Ú
+ 1041              		.loc 1 290 3 is_stmt 1 view .LVU329
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 24
+
+
+ 1042              		.loc 1 290 14 is_stmt 0 view .LVU330
+ 1043 0072 4FEA1E23 		lsr	r3, lr, #8
+ 1044              		.loc 1 290 11 view .LVU331
+ 1045 0076 8DF80E30 		strb	r3, [sp, #14]
+ 291:Core/BSP/Emm_V5.c ****   cmd[15] =  (uint8_t)(sl_ma >> 0);     // ÎÞÏÞÎ»Åö×²»ØÁã¼ì²âµçÁ÷(Ma)µÍ8Î»×Ö½Ú 
+ 1046              		.loc 1 291 3 is_stmt 1 view .LVU332
+ 1047              		.loc 1 291 11 is_stmt 0 view .LVU333
+ 1048 007a 8DF80FE0 		strb	lr, [sp, #15]
+ 292:Core/BSP/Emm_V5.c ****   cmd[16] =  (uint8_t)(sl_ms >> 8);     // ÎÞÏÞÎ»Åö×²»ØÁã¼ì²âÊ±¼ä(Ms)¸ß8Î»×Ö½Ú
+ 1049              		.loc 1 292 3 is_stmt 1 view .LVU334
+ 1050              		.loc 1 292 14 is_stmt 0 view .LVU335
+ 1051 007e 4FEA1C23 		lsr	r3, ip, #8
+ 1052              		.loc 1 292 11 view .LVU336
+ 1053 0082 8DF81030 		strb	r3, [sp, #16]
+ 293:Core/BSP/Emm_V5.c ****   cmd[17] =  (uint8_t)(sl_ms >> 0);     // ÎÞÏÞÎ»Åö×²»ØÁã¼ì²âÊ±¼ä(Ms)µÍ8Î»×Ö½Ú
+ 1054              		.loc 1 293 3 is_stmt 1 view .LVU337
+ 1055              		.loc 1 293 11 is_stmt 0 view .LVU338
+ 1056 0086 8DF811C0 		strb	ip, [sp, #17]
+ 294:Core/BSP/Emm_V5.c ****   cmd[18] =  potF;                      // ÉÏµç×Ô¶¯´¥·¢»ØÁã£¬falseÎª²»Ê¹ÄÜ£¬trueÎªÊ¹ÄÜ
+ 1057              		.loc 1 294 3 is_stmt 1 view .LVU339
+ 1058              		.loc 1 294 11 is_stmt 0 view .LVU340
+ 1059 008a 9DF84C30 		ldrb	r3, [sp, #76]	@ zero_extendqisi2
+ 1060 008e 8DF81230 		strb	r3, [sp, #18]
+ 295:Core/BSP/Emm_V5.c ****   cmd[19] =  0x6B;                      // Ð£Ñé×Ö½Ú
+ 1061              		.loc 1 295 3 is_stmt 1 view .LVU341
+ 1062              		.loc 1 295 11 is_stmt 0 view .LVU342
+ 1063 0092 6B23     		movs	r3, #107
+ 1064 0094 8DF81330 		strb	r3, [sp, #19]
+ 296:Core/BSP/Emm_V5.c ****   
+ 297:Core/BSP/Emm_V5.c ****   // ·¢ËÍÃüÁî
+ 298:Core/BSP/Emm_V5.c ****   usart_SendCmd(cmd, 20);
+ 1065              		.loc 1 298 3 is_stmt 1 view .LVU343
+ 1066 0098 1421     		movs	r1, #20
+ 1067              	.LVL88:
+ 1068              		.loc 1 298 3 is_stmt 0 view .LVU344
+ 1069 009a 6846     		mov	r0, sp
+ 1070 009c FFF7FEFF 		bl	usart_SendCmd
+ 1071              	.LVL89:
+ 299:Core/BSP/Emm_V5.c **** }
+ 1072              		.loc 1 299 1 view .LVU345
+ 1073 00a0 09B0     		add	sp, sp, #36
+ 1074              	.LCFI32:
+ 1075              		.cfi_def_cfa_offset 20
+ 1076              		@ sp needed
+ 1077 00a2 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1078              		.loc 1 299 1 view .LVU346
+ 1079              		.cfi_endproc
+ 1080              	.LFE10:
+ 1082              		.section	.text.Emm_V5_Origin_Trigger_Return,"ax",%progbits
+ 1083              		.align	1
+ 1084              		.global	Emm_V5_Origin_Trigger_Return
+ 1085              		.syntax unified
+ 1086              		.thumb
+ 1087              		.thumb_func
+ 1089              	Emm_V5_Origin_Trigger_Return:
+ 1090              	.LVL90:
+ 1091              	.LFB11:
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 25
+
+
+ 300:Core/BSP/Emm_V5.c **** 
+ 301:Core/BSP/Emm_V5.c **** /**
+ 302:Core/BSP/Emm_V5.c ****   * @brief    ´¥·¢»ØÁã
+ 303:Core/BSP/Emm_V5.c ****   * @param    addr   £ºµç»úµØÖ·
+ 304:Core/BSP/Emm_V5.c ****   * @param    o_mode £º»ØÁãÄ£Ê½£¬0Îªµ¥È¦¾Í½ü»ØÁã£¬1Îªµ¥È¦·½Ïò»ØÁã£¬2Îª¶àÈ¦ÎÞÏÞÎ»Åö×²»ØÁã£¬3Îª¶àÈ¦ÓÐ
+ 305:Core/BSP/Emm_V5.c ****   * @param    snF   £º¶à»úÍ¬²½±êÖ¾£¬falseÎª²»ÆôÓÃ£¬trueÎªÆôÓÃ
+ 306:Core/BSP/Emm_V5.c ****   * @retval   µØÖ· + ¹¦ÄÜÂë + ÃüÁî×´Ì¬ + Ð£Ñé×Ö½Ú
+ 307:Core/BSP/Emm_V5.c ****   */
+ 308:Core/BSP/Emm_V5.c **** void Emm_V5_Origin_Trigger_Return(uint8_t addr, uint8_t o_mode, bool snF)
+ 309:Core/BSP/Emm_V5.c **** {
+ 1092              		.loc 1 309 1 is_stmt 1 view -0
+ 1093              		.cfi_startproc
+ 1094              		@ args = 0, pretend = 0, frame = 16
+ 1095              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1096              		.loc 1 309 1 is_stmt 0 view .LVU348
+ 1097 0000 00B5     		push	{lr}
+ 1098              	.LCFI33:
+ 1099              		.cfi_def_cfa_offset 4
+ 1100              		.cfi_offset 14, -4
+ 1101 0002 85B0     		sub	sp, sp, #20
+ 1102              	.LCFI34:
+ 1103              		.cfi_def_cfa_offset 24
+ 310:Core/BSP/Emm_V5.c ****   uint8_t cmd[16] = {0};
+ 1104              		.loc 1 310 3 is_stmt 1 view .LVU349
+ 1105              		.loc 1 310 11 is_stmt 0 view .LVU350
+ 1106 0004 0023     		movs	r3, #0
+ 1107 0006 0093     		str	r3, [sp]
+ 1108 0008 0193     		str	r3, [sp, #4]
+ 1109 000a 0293     		str	r3, [sp, #8]
+ 1110 000c 0393     		str	r3, [sp, #12]
+ 311:Core/BSP/Emm_V5.c ****   
+ 312:Core/BSP/Emm_V5.c ****   // ×°ÔØÃüÁî
+ 313:Core/BSP/Emm_V5.c ****   cmd[0] =  addr;                       // µØÖ·
+ 1111              		.loc 1 313 3 is_stmt 1 view .LVU351
+ 1112              		.loc 1 313 10 is_stmt 0 view .LVU352
+ 1113 000e 8DF80000 		strb	r0, [sp]
+ 314:Core/BSP/Emm_V5.c ****   cmd[1] =  0x9A;                       // ¹¦ÄÜÂë
+ 1114              		.loc 1 314 3 is_stmt 1 view .LVU353
+ 1115              		.loc 1 314 10 is_stmt 0 view .LVU354
+ 1116 0012 9A23     		movs	r3, #154
+ 1117 0014 8DF80130 		strb	r3, [sp, #1]
+ 315:Core/BSP/Emm_V5.c ****   cmd[2] =  o_mode;                     // »ØÁãÄ£Ê½£¬0Îªµ¥È¦¾Í½ü»ØÁã£¬1Îªµ¥È¦·½Ïò»ØÁã£¬2Îª¶àÈ¦ÎÞÏÞÎ
+ 1118              		.loc 1 315 3 is_stmt 1 view .LVU355
+ 1119              		.loc 1 315 10 is_stmt 0 view .LVU356
+ 1120 0018 8DF80210 		strb	r1, [sp, #2]
+ 316:Core/BSP/Emm_V5.c ****   cmd[3] =  snF;                        // ¶à»úÍ¬²½ÔË¶¯±êÖ¾£¬falseÎª²»ÆôÓÃ£¬trueÎªÆôÓÃ
+ 1121              		.loc 1 316 3 is_stmt 1 view .LVU357
+ 1122              		.loc 1 316 10 is_stmt 0 view .LVU358
+ 1123 001c 8DF80320 		strb	r2, [sp, #3]
+ 317:Core/BSP/Emm_V5.c ****   cmd[4] =  0x6B;                       // Ð£Ñé×Ö½Ú
+ 1124              		.loc 1 317 3 is_stmt 1 view .LVU359
+ 1125              		.loc 1 317 10 is_stmt 0 view .LVU360
+ 1126 0020 6B23     		movs	r3, #107
+ 1127 0022 8DF80430 		strb	r3, [sp, #4]
+ 318:Core/BSP/Emm_V5.c ****   
+ 319:Core/BSP/Emm_V5.c ****   // ·¢ËÍÃüÁî
+ 320:Core/BSP/Emm_V5.c ****   usart_SendCmd(cmd, 5);
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 26
+
+
+ 1128              		.loc 1 320 3 is_stmt 1 view .LVU361
+ 1129 0026 0521     		movs	r1, #5
+ 1130              	.LVL91:
+ 1131              		.loc 1 320 3 is_stmt 0 view .LVU362
+ 1132 0028 6846     		mov	r0, sp
+ 1133              	.LVL92:
+ 1134              		.loc 1 320 3 view .LVU363
+ 1135 002a FFF7FEFF 		bl	usart_SendCmd
+ 1136              	.LVL93:
+ 321:Core/BSP/Emm_V5.c **** }
+ 1137              		.loc 1 321 1 view .LVU364
+ 1138 002e 05B0     		add	sp, sp, #20
+ 1139              	.LCFI35:
+ 1140              		.cfi_def_cfa_offset 4
+ 1141              		@ sp needed
+ 1142 0030 5DF804FB 		ldr	pc, [sp], #4
+ 1143              		.cfi_endproc
+ 1144              	.LFE11:
+ 1146              		.section	.text.Emm_V5_Origin_Interrupt,"ax",%progbits
+ 1147              		.align	1
+ 1148              		.global	Emm_V5_Origin_Interrupt
+ 1149              		.syntax unified
+ 1150              		.thumb
+ 1151              		.thumb_func
+ 1153              	Emm_V5_Origin_Interrupt:
+ 1154              	.LVL94:
+ 1155              	.LFB12:
+ 322:Core/BSP/Emm_V5.c **** 
+ 323:Core/BSP/Emm_V5.c **** /**
+ 324:Core/BSP/Emm_V5.c ****   * @brief    Ç¿ÖÆÖÐ¶Ï²¢ÍË³ö»ØÁã
+ 325:Core/BSP/Emm_V5.c ****   * @param    addr  £ºµç»úµØÖ·
+ 326:Core/BSP/Emm_V5.c ****   * @retval   µØÖ· + ¹¦ÄÜÂë + ÃüÁî×´Ì¬ + Ð£Ñé×Ö½Ú
+ 327:Core/BSP/Emm_V5.c ****   */
+ 328:Core/BSP/Emm_V5.c **** void Emm_V5_Origin_Interrupt(uint8_t addr)
+ 329:Core/BSP/Emm_V5.c **** {
+ 1156              		.loc 1 329 1 is_stmt 1 view -0
+ 1157              		.cfi_startproc
+ 1158              		@ args = 0, pretend = 0, frame = 16
+ 1159              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1160              		.loc 1 329 1 is_stmt 0 view .LVU366
+ 1161 0000 00B5     		push	{lr}
+ 1162              	.LCFI36:
+ 1163              		.cfi_def_cfa_offset 4
+ 1164              		.cfi_offset 14, -4
+ 1165 0002 85B0     		sub	sp, sp, #20
+ 1166              	.LCFI37:
+ 1167              		.cfi_def_cfa_offset 24
+ 330:Core/BSP/Emm_V5.c ****   uint8_t cmd[16] = {0};
+ 1168              		.loc 1 330 3 is_stmt 1 view .LVU367
+ 1169              		.loc 1 330 11 is_stmt 0 view .LVU368
+ 1170 0004 0023     		movs	r3, #0
+ 1171 0006 0093     		str	r3, [sp]
+ 1172 0008 0193     		str	r3, [sp, #4]
+ 1173 000a 0293     		str	r3, [sp, #8]
+ 1174 000c 0393     		str	r3, [sp, #12]
+ 331:Core/BSP/Emm_V5.c ****   
+ 332:Core/BSP/Emm_V5.c ****   // ×°ÔØÃüÁî
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 27
+
+
+ 333:Core/BSP/Emm_V5.c ****   cmd[0] =  addr;                       // µØÖ·
+ 1175              		.loc 1 333 3 is_stmt 1 view .LVU369
+ 1176              		.loc 1 333 10 is_stmt 0 view .LVU370
+ 1177 000e 8DF80000 		strb	r0, [sp]
+ 334:Core/BSP/Emm_V5.c ****   cmd[1] =  0x9C;                       // ¹¦ÄÜÂë
+ 1178              		.loc 1 334 3 is_stmt 1 view .LVU371
+ 1179              		.loc 1 334 10 is_stmt 0 view .LVU372
+ 1180 0012 9C23     		movs	r3, #156
+ 1181 0014 8DF80130 		strb	r3, [sp, #1]
+ 335:Core/BSP/Emm_V5.c ****   cmd[2] =  0x48;                       // ¸¨ÖúÂë
+ 1182              		.loc 1 335 3 is_stmt 1 view .LVU373
+ 1183              		.loc 1 335 10 is_stmt 0 view .LVU374
+ 1184 0018 4823     		movs	r3, #72
+ 1185 001a 8DF80230 		strb	r3, [sp, #2]
+ 336:Core/BSP/Emm_V5.c ****   cmd[3] =  0x6B;                       // Ð£Ñé×Ö½Ú
+ 1186              		.loc 1 336 3 is_stmt 1 view .LVU375
+ 1187              		.loc 1 336 10 is_stmt 0 view .LVU376
+ 1188 001e 6B23     		movs	r3, #107
+ 1189 0020 8DF80330 		strb	r3, [sp, #3]
+ 337:Core/BSP/Emm_V5.c ****   
+ 338:Core/BSP/Emm_V5.c ****   // ·¢ËÍÃüÁî
+ 339:Core/BSP/Emm_V5.c ****   usart_SendCmd(cmd, 4);
+ 1190              		.loc 1 339 3 is_stmt 1 view .LVU377
+ 1191 0024 0421     		movs	r1, #4
+ 1192 0026 6846     		mov	r0, sp
+ 1193              	.LVL95:
+ 1194              		.loc 1 339 3 is_stmt 0 view .LVU378
+ 1195 0028 FFF7FEFF 		bl	usart_SendCmd
+ 1196              	.LVL96:
+ 340:Core/BSP/Emm_V5.c **** }
+ 1197              		.loc 1 340 1 view .LVU379
+ 1198 002c 05B0     		add	sp, sp, #20
+ 1199              	.LCFI38:
+ 1200              		.cfi_def_cfa_offset 4
+ 1201              		@ sp needed
+ 1202 002e 5DF804FB 		ldr	pc, [sp], #4
+ 1203              		.cfi_endproc
+ 1204              	.LFE12:
+ 1206              		.text
+ 1207              	.Letext0:
+ 1208              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 1209              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 1210              		.file 4 "Core/BSP/Emm_V5.h"
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s 			page 28
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Emm_V5.c
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:20     .text.Emm_V5_Reset_CurPos_To_Zero:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:26     .text.Emm_V5_Reset_CurPos_To_Zero:00000000 Emm_V5_Reset_CurPos_To_Zero
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:81     .text.Emm_V5_Reset_Clog_Pro:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:87     .text.Emm_V5_Reset_Clog_Pro:00000000 Emm_V5_Reset_Clog_Pro
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:141    .text.Emm_V5_Read_Sys_Params:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:147    .text.Emm_V5_Read_Sys_Params:00000000 Emm_V5_Read_Sys_Params
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:181    .text.Emm_V5_Read_Sys_Params:0000001a $d
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:436    .text.Emm_V5_Modify_Ctrl_Mode:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:442    .text.Emm_V5_Modify_Ctrl_Mode:00000000 Emm_V5_Modify_Ctrl_Mode
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:504    .text.Emm_V5_En_Control:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:510    .text.Emm_V5_En_Control:00000000 Emm_V5_En_Control
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:572    .text.Emm_V5_Vel_Control:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:578    .text.Emm_V5_Vel_Control:00000000 Emm_V5_Vel_Control
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:651    .text.Emm_V5_Pos_Control:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:657    .text.Emm_V5_Pos_Control:00000000 Emm_V5_Pos_Control
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:753    .text.Emm_V5_Stop_Now:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:759    .text.Emm_V5_Stop_Now:00000000 Emm_V5_Stop_Now
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:818    .text.Emm_V5_Synchronous_motion:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:824    .text.Emm_V5_Synchronous_motion:00000000 Emm_V5_Synchronous_motion
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:878    .text.Emm_V5_Origin_Set_O:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:884    .text.Emm_V5_Origin_Set_O:00000000 Emm_V5_Origin_Set_O
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:943    .text.Emm_V5_Origin_Modify_Params:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:949    .text.Emm_V5_Origin_Modify_Params:00000000 Emm_V5_Origin_Modify_Params
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:1083   .text.Emm_V5_Origin_Trigger_Return:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:1089   .text.Emm_V5_Origin_Trigger_Return:00000000 Emm_V5_Origin_Trigger_Return
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:1147   .text.Emm_V5_Origin_Interrupt:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:1153   .text.Emm_V5_Origin_Interrupt:00000000 Emm_V5_Origin_Interrupt
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:198    .text.Emm_V5_Read_Sys_Params:0000002b $d
+C:\Users\oyx19\AppData\Local\Temp\ccyridIo.s:198    .text.Emm_V5_Read_Sys_Params:0000002c $t
+
+UNDEFINED SYMBOLS
+usart_SendCmd

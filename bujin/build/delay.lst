@@ -1,0 +1,218 @@
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccNurEub.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"delay.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.delay_ms,"ax",%progbits
+  20              		.align	1
+  21              		.global	delay_ms
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	delay_ms:
+  27              	.LVL0:
+  28              	.LFB130:
+  29              		.file 1 "Core/BSP/delay.c"
+   1:Core/BSP/delay.c **** #include "delay.h"
+   2:Core/BSP/delay.c **** 
+   3:Core/BSP/delay.c **** /**********************************************************
+   4:Core/BSP/delay.c **** ***	Emm_V5.0步进闭环控制例程
+   5:Core/BSP/delay.c **** ***	编写作者：ZHANGDATOU
+   6:Core/BSP/delay.c **** ***	技术支持：张大头闭环伺服
+   7:Core/BSP/delay.c **** ***	淘宝店铺：https://zhangdatou.taobao.com
+   8:Core/BSP/delay.c **** ***	CSDN博客：http s://blog.csdn.net/zhangdatou666
+   9:Core/BSP/delay.c **** ***	qq交流群：262438510
+  10:Core/BSP/delay.c **** **********************************************************/
+  11:Core/BSP/delay.c **** /**
+  12:Core/BSP/delay.c **** 	*	@brief		毫秒级延时
+  13:Core/BSP/delay.c **** 	*	@param		int32_t u32Cnt
+  14:Core/BSP/delay.c **** 	*	@retval		无
+  15:Core/BSP/delay.c **** 	*/
+  16:Core/BSP/delay.c **** void delay_ms(int32_t i32Cnt)
+  17:Core/BSP/delay.c **** {
+  30              		.loc 1 17 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 8
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  35              		.loc 1 17 1 is_stmt 0 view .LVU1
+  36 0000 82B0     		sub	sp, sp, #8
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 8
+  18:Core/BSP/delay.c **** 	__IO int32_t i32end = 0;
+  39              		.loc 1 18 2 is_stmt 1 view .LVU2
+  40              		.loc 1 18 15 is_stmt 0 view .LVU3
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccNurEub.s 			page 2
+
+
+  41 0002 0022     		movs	r2, #0
+  42 0004 0192     		str	r2, [sp, #4]
+  19:Core/BSP/delay.c **** 
+  20:Core/BSP/delay.c **** 	SysTick->LOAD = 0xFFFFFF;
+  43              		.loc 1 20 2 is_stmt 1 view .LVU4
+  44              		.loc 1 20 16 is_stmt 0 view .LVU5
+  45 0006 4FF0E023 		mov	r3, #-536813568
+  46 000a 6FF07F41 		mvn	r1, #-16777216
+  47 000e 5961     		str	r1, [r3, #20]
+  21:Core/BSP/delay.c **** 	SysTick->VAL  = 0;
+  48              		.loc 1 21 2 is_stmt 1 view .LVU6
+  49              		.loc 1 21 16 is_stmt 0 view .LVU7
+  50 0010 9A61     		str	r2, [r3, #24]
+  22:Core/BSP/delay.c **** 	SysTick->CTRL = (SysTick_CTRL_ENABLE_Msk | SysTick_CTRL_CLKSOURCE_Msk);
+  51              		.loc 1 22 2 is_stmt 1 view .LVU8
+  52              		.loc 1 22 16 is_stmt 0 view .LVU9
+  53 0012 0522     		movs	r2, #5
+  54 0014 1A61     		str	r2, [r3, #16]
+  23:Core/BSP/delay.c **** 
+  24:Core/BSP/delay.c **** 	while(i32Cnt > 0)
+  55              		.loc 1 24 2 is_stmt 1 view .LVU10
+  56              		.loc 1 24 7 is_stmt 0 view .LVU11
+  57 0016 13E0     		b	.L2
+  58              	.L4:
+  25:Core/BSP/delay.c **** 	{
+  26:Core/BSP/delay.c **** 		SysTick->VAL = 0;
+  59              		.loc 1 26 3 is_stmt 1 view .LVU12
+  60              		.loc 1 26 16 is_stmt 0 view .LVU13
+  61 0018 4FF0E023 		mov	r3, #-536813568
+  62 001c 0022     		movs	r2, #0
+  63 001e 9A61     		str	r2, [r3, #24]
+  27:Core/BSP/delay.c **** 		i32end = 0x1000000 - (SystemCoreClock / 1000);
+  64              		.loc 1 27 3 is_stmt 1 view .LVU14
+  65              		.loc 1 27 41 is_stmt 0 view .LVU15
+  66 0020 0C4B     		ldr	r3, .L6
+  67 0022 1B68     		ldr	r3, [r3]
+  68 0024 0C4A     		ldr	r2, .L6+4
+  69 0026 A2FB0323 		umull	r2, r3, r2, r3
+  70 002a 9B09     		lsrs	r3, r3, #6
+  71              		.loc 1 27 22 view .LVU16
+  72 002c C3F18073 		rsb	r3, r3, #16777216
+  73              		.loc 1 27 10 view .LVU17
+  74 0030 0193     		str	r3, [sp, #4]
+  28:Core/BSP/delay.c **** 		while(SysTick->VAL > i32end);
+  75              		.loc 1 28 3 is_stmt 1 view .LVU18
+  76              	.L3:
+  77              		.loc 1 28 31 discriminator 1 view .LVU19
+  78              		.loc 1 28 8 discriminator 1 view .LVU20
+  79              		.loc 1 28 16 is_stmt 0 discriminator 1 view .LVU21
+  80 0032 4FF0E023 		mov	r3, #-536813568
+  81 0036 9A69     		ldr	r2, [r3, #24]
+  82              		.loc 1 28 22 discriminator 1 view .LVU22
+  83 0038 019B     		ldr	r3, [sp, #4]
+  84              		.loc 1 28 8 discriminator 1 view .LVU23
+  85 003a 9A42     		cmp	r2, r3
+  86 003c F9D8     		bhi	.L3
+  29:Core/BSP/delay.c **** 		--i32Cnt;
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccNurEub.s 			page 3
+
+
+  87              		.loc 1 29 3 is_stmt 1 view .LVU24
+  88 003e 0138     		subs	r0, r0, #1
+  89              	.LVL1:
+  90              	.L2:
+  24:Core/BSP/delay.c **** 	{
+  91              		.loc 1 24 7 view .LVU25
+  92 0040 0028     		cmp	r0, #0
+  93 0042 E9DC     		bgt	.L4
+  30:Core/BSP/delay.c **** 	}
+  31:Core/BSP/delay.c **** 
+  32:Core/BSP/delay.c **** 	SysTick->CTRL = (SysTick->CTRL & (~SysTick_CTRL_ENABLE_Msk));
+  94              		.loc 1 32 2 view .LVU26
+  95              		.loc 1 32 26 is_stmt 0 view .LVU27
+  96 0044 4FF0E022 		mov	r2, #-536813568
+  97 0048 1369     		ldr	r3, [r2, #16]
+  98              		.loc 1 32 33 view .LVU28
+  99 004a 23F00103 		bic	r3, r3, #1
+ 100              		.loc 1 32 16 view .LVU29
+ 101 004e 1361     		str	r3, [r2, #16]
+  33:Core/BSP/delay.c **** }
+ 102              		.loc 1 33 1 view .LVU30
+ 103 0050 02B0     		add	sp, sp, #8
+ 104              	.LCFI1:
+ 105              		.cfi_def_cfa_offset 0
+ 106              		@ sp needed
+ 107 0052 7047     		bx	lr
+ 108              	.L7:
+ 109              		.align	2
+ 110              	.L6:
+ 111 0054 00000000 		.word	SystemCoreClock
+ 112 0058 D34D6210 		.word	274877907
+ 113              		.cfi_endproc
+ 114              	.LFE130:
+ 116              		.section	.text.delay_cnt,"ax",%progbits
+ 117              		.align	1
+ 118              		.global	delay_cnt
+ 119              		.syntax unified
+ 120              		.thumb
+ 121              		.thumb_func
+ 123              	delay_cnt:
+ 124              	.LVL2:
+ 125              	.LFB131:
+  34:Core/BSP/delay.c **** 
+  35:Core/BSP/delay.c **** /**
+  36:Core/BSP/delay.c **** 	*	@brief		软件延时
+  37:Core/BSP/delay.c **** 	*	@param		int32_t u32Cnt
+  38:Core/BSP/delay.c **** 	*	@retval		无
+  39:Core/BSP/delay.c **** 	*/
+  40:Core/BSP/delay.c **** void delay_cnt(int32_t i32Cnt)
+  41:Core/BSP/delay.c **** {
+ 126              		.loc 1 41 1 is_stmt 1 view -0
+ 127              		.cfi_startproc
+ 128              		@ args = 0, pretend = 0, frame = 0
+ 129              		@ frame_needed = 0, uses_anonymous_args = 0
+ 130              		@ link register save eliminated.
+  42:Core/BSP/delay.c **** 	while(i32Cnt > 0) { i32Cnt--; }
+ 131              		.loc 1 42 2 view .LVU32
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccNurEub.s 			page 4
+
+
+ 132              		.loc 1 42 7 is_stmt 0 view .LVU33
+ 133 0000 00E0     		b	.L9
+ 134              	.L10:
+ 135              		.loc 1 42 22 is_stmt 1 discriminator 2 view .LVU34
+ 136              		.loc 1 42 28 is_stmt 0 discriminator 2 view .LVU35
+ 137 0002 0138     		subs	r0, r0, #1
+ 138              	.LVL3:
+ 139              	.L9:
+ 140              		.loc 1 42 7 is_stmt 1 discriminator 1 view .LVU36
+ 141 0004 0028     		cmp	r0, #0
+ 142 0006 FCDC     		bgt	.L10
+  43:Core/BSP/delay.c **** }
+ 143              		.loc 1 43 1 is_stmt 0 view .LVU37
+ 144 0008 7047     		bx	lr
+ 145              		.cfi_endproc
+ 146              	.LFE131:
+ 148              		.text
+ 149              	.Letext0:
+ 150              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 151              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 152              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 153              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ARM GAS  C:\Users\oyx19\AppData\Local\Temp\ccNurEub.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 delay.c
+C:\Users\oyx19\AppData\Local\Temp\ccNurEub.s:20     .text.delay_ms:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccNurEub.s:26     .text.delay_ms:00000000 delay_ms
+C:\Users\oyx19\AppData\Local\Temp\ccNurEub.s:111    .text.delay_ms:00000054 $d
+C:\Users\oyx19\AppData\Local\Temp\ccNurEub.s:117    .text.delay_cnt:00000000 $t
+C:\Users\oyx19\AppData\Local\Temp\ccNurEub.s:123    .text.delay_cnt:00000000 delay_cnt
+
+UNDEFINED SYMBOLS
+SystemCoreClock
