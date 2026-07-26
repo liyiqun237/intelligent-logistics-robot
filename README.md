@@ -387,3 +387,7 @@ python3 -c "import serial; s=serial.Serial('/dev/ttyUSB0', 115200); print('OK')"
 3. 调整视觉识别的坐标转换
 4. 验证机械臂运动学参数
 ```
+## 📄 技术文档
+- **完整技术报告（英文 PDF，浏览器直接预览）：**  
+  [Technical_Report_Logistics_Robot_EN.pdf](https://raw.githack.com/liyiqun237/intelligent-logistics-robot/main/Technical_Report_Logistics_Robot_EN.pdf)
+  > 涵盖麦卡纳姆轮运动学、四阶巴特沃斯滤波器设计、亚像素霍夫变换提取算法及 UART 通信协议。复现了上文所述的 ±2mm / ±1mm 定位精度。

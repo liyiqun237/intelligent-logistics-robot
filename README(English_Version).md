@@ -127,3 +127,8 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 ## 📧 Contact
 
 Yiqun Li (HIT Shenzhen) — [GitHub Profile](https://github.com/liyiqun237)
+
+## 📄 Technical Documentation
+- **Full Technical Report (EN, PDF, in-browser preview):**  
+  [Technical_Report_Logistics_Robot_EN.pdf](https://raw.githack.com/liyiqun237/intelligent-logistics-robot/main/Technical_Report_Logistics_Robot_EN.pdf)
+  > Covers Mecanum wheel kinematics, 4th-order Butterworth filter design, sub-pixel Hough transform extraction, and UART protocol specifications. Reproduces the ±2mm / ±1mm positioning accuracy stated above.
