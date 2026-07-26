@@ -71,7 +71,7 @@ pip3 install opencv-python numpy pyserial pyzbar threading
 
 #### 1. 克隆项目
 ```bash
-git clone https://gitlab.com/Collapsar-ss/logistics-handling.git
+git clone https://github.com/liyiqun237/intelligent-logistics-robot
 cd logistics-handling
 ```
 
@@ -309,7 +309,7 @@ logistics-handling/
 
 - 项目维护者: [Your Name]
 - 邮箱: your.email@example.com
-- 项目链接: https://gitlab.com/Collapsar-ss/logistics-handling
+- 项目链接: https://github.com/liyiqun237/intelligent-logistics-robot
 
 ## 致谢
 
